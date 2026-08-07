@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dqbingo/static/css/main.29529936.css",
-    "main.js": "/dqbingo/static/js/main.f379fd69.js",
+    "main.css": "/dqbingo/static/css/main.7b2c0851.css",
+    "main.js": "/dqbingo/static/js/main.20c61731.js",
     "static/media/shuffle.wav": "/dqbingo/static/media/shuffle.61b100e7a51014b7a8dc.wav",
     "static/media/venmo.jpeg": "/dqbingo/static/media/venmo.903433d9b09398265e23.jpeg",
     "static/media/paypalme.jpeg": "/dqbingo/static/media/paypalme.5b00fea4fb9b2e18c348.jpeg",
@@ -33,11 +33,11 @@
     "static/media/logo.svg": "/dqbingo/static/media/logo.af6c8cf45db12f80a117421f371a0daf.svg",
     "static/media/digital-7.woff": "/dqbingo/static/media/digital-7.4eed57244bb0a0bd583d.woff",
     "index.html": "/dqbingo/index.html",
-    "main.29529936.css.map": "/dqbingo/static/css/main.29529936.css.map",
-    "main.f379fd69.js.map": "/dqbingo/static/js/main.f379fd69.js.map"
+    "main.7b2c0851.css.map": "/dqbingo/static/css/main.7b2c0851.css.map",
+    "main.20c61731.js.map": "/dqbingo/static/js/main.20c61731.js.map"
   },
   "entrypoints": [
-    "static/css/main.29529936.css",
-    "static/js/main.f379fd69.js"
+    "static/css/main.7b2c0851.css",
+    "static/js/main.20c61731.js"
   ]
 }
