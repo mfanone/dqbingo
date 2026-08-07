@@ -19,19 +19,52 @@ ul li {
 	white-space: normal;
 }
 
+/* Menu Toggle (Hamburger) */
+.menu-toggle {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 2rem;
+	height: 1.5rem;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	span {
+		display: block;
+		height: 3px;
+		width: 100%;
+		border-radius: 2px;
+		background-color: var(--primary-color);
+	}
+	&:hover {
+		background: transparent;
+		span {
+			background-color: var(--secondary-color);
+		}
+	}
+}
+
 /* Menu */
+.site-menu {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease;
+	&.open {
+		max-height: 20rem;
+	}
+}
 .menu {
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 1rem 0 0;
 	font-family: var(--condensed-font);
-	@media screen and (max-width: 700px) {
-		white-space: pre-wrap;
-	}
 	li {
-		display: inline-block;
+		display: block;
 		padding: 0.25em 0.5em;
 		a {
+			display: inline-block;
 			font-size: 1.5rem;
 			padding: 0.5em;
 			font-weight: 700;

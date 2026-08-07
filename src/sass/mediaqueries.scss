@@ -1,15 +1,5 @@
 /* Mobile to Portrait Tablet */
 @media screen and (max-width: 700px){
-  // Header
-  header .row {
-    .col:nth-of-type(2) {
-      order: 2;
-    }
-    .col:last-child {
-      order: 1;
-    }
-  }
-
   // Menu
   .menu li a {
     font-size: 18px;

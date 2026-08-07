@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 // Styles
@@ -12,39 +12,65 @@ import Help from './components/pages/Help.js';
 import Patterns from './components/pages/Patterns.js';
 import Settings from './components/pages/Settings.js';
 
-const routing = (
-	<Router basename={process.env.PUBLIC_URL}>
-		<header>
-			<div className="container row align-center">
-				<div className="col shrink">
-					<Link to="/">
-						<img src={logo} alt="Let's Play Bingo!" className="logo" />
-					</Link>
+function App() {
+	const [menuOpen, setMenuOpen] = useState(false);
+	const closeMenu = () => setMenuOpen(false);
+
+	return (
+		<Router basename={process.env.PUBLIC_URL}>
+			<header>
+				<div className="container row align-center justify-space-between">
+					<div className="col shrink">
+						<Link to="/" onClick={closeMenu}>
+							<img src={logo} alt="Let's Play Bingo!" className="logo" />
+						</Link>
+					</div>
+					<div className="col shrink">
+						<button
+							className="menu-toggle"
+							onClick={() => setMenuOpen(!menuOpen)}
+							aria-label="Toggle menu"
+							aria-expanded={menuOpen}
+						>
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+					</div>
 				</div>
-				<div className="col grow padding-md no-text-wrap text-right">
+				<nav className={menuOpen ? 'site-menu open' : 'site-menu'}>
 					<ul className="menu">
 						<li>
-							<Link to="/">Play</Link>
+							<Link to="/" onClick={closeMenu}>
+								Play
+							</Link>
 						</li>
 						<li>
-							<Link to="/generator">Cards</Link>
+							<Link to="/generator" onClick={closeMenu}>
+								Cards
+							</Link>
 						</li>
 						<li>
-							<Link to="/settings">Settings</Link>
+							<Link to="/settings" onClick={closeMenu}>
+								Settings
+							</Link>
 						</li>
 						<li>
-							<Link to="/help">Help</Link>
+							<Link to="/help" onClick={closeMenu}>
+								Help
+							</Link>
 						</li>
 					</ul>
-				</div>
-			</div>
-		</header>
+				</nav>
+			</header>
 
-		<Route exact path="/" component={BingoGame} />
-		<Route path="/generator" component={CardGenerator} />
-		<Route path="/patterns" component={Patterns} />
-		<Route path="/settings" component={Settings} />
-		<Route path="/help" component={Help} />
-	</Router>
-);
-ReactDOM.render(routing, document.getElementById('root'));
+			<Route exact path="/" component={BingoGame} />
+			<Route path="/generator" component={CardGenerator} />
+			<Route path="/patterns" component={Patterns} />
+			<Route path="/settings" component={Settings} />
+			<Route path="/help" component={Help} />
+		</Router>
+	);
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
