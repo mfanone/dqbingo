@@ -14,6 +14,9 @@ import BingoBoard from './subcomponents/BingoBoard.js';
 import Pattern from './subcomponents/Pattern.js';
 import CallHistory from './subcomponents/CallHistory.js';
 
+// Images
+import logo from '../images/logo.svg';
+
 // Utilities
 import {
 	generateBingoBoard,
@@ -522,6 +525,13 @@ class BingoGame extends Component {
 					<div className="container row no-wrap align-stretch">
 						{/* ------ Board ------- */}
 						<div className="col pattern-side shrink padding-xlg">
+							{/* -------- Logo --------- */}
+							<div className="row justify-center margin-bottom-lg">
+								<div className="logo-chip">
+									<img src={logo} alt="Let's Play Bingo!" className="logo" />
+								</div>
+							</div>
+
 							{/* -------- Digital Displays --------- */}
 							<div className="row no-wrap margin-bottom-lg justify-space-between white-text">
 								<div className="col text-center margin-sm">

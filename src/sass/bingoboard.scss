@@ -6,6 +6,17 @@
 		}
 	}
 	.pattern-side {
+		/* Logo */
+		.logo-chip {
+			display: inline-block;
+			background-color: var(--color-cream);
+			border-radius: 8px;
+			padding: 0.5rem 1rem;
+			.logo {
+				display: block;
+				height: 48px;
+			}
+		}
 		/* Called Numbers */
 		.callNumber {
 			font-family: var(--digital-font);

@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 // Styles
 import './sass/main.scss';
-// Images
-import logo from './images/logo.svg';
 // Custom Components
 import BingoGame from './components/BingoGame.js';
 import CardGenerator from './components/pages/CardGenerator.js';
@@ -19,12 +17,7 @@ function App() {
 	return (
 		<Router basename={process.env.PUBLIC_URL}>
 			<header>
-				<div className="container row align-center justify-space-between">
-					<div className="col shrink">
-						<Link to="/" onClick={closeMenu}>
-							<img src={logo} alt="Let's Play Bingo!" className="logo" />
-						</Link>
-					</div>
+				<div className="container row align-center justify-end">
 					<div className="col shrink">
 						<button
 							className="menu-toggle"
