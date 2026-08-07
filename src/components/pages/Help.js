@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Help extends React.Component {
 	componentDidMount() {
@@ -102,9 +103,10 @@ class Help extends React.Component {
 							numbers, and reset the game as necessary when someone calls bingo.
 						</p>
 						<p>
-							Choose what settings you wish to play with. You can learn more
-							about game settings by reviewing the{' '}
-							<a href="#game-modes">game modes</a> section.
+							Choose what settings you wish to play with on the{' '}
+							<Link to="/settings">Settings</Link> page. You can learn more
+							about the available game modes by reviewing the{' '}
+							<a href="#game-modes">game modes</a> section below.
 						</p>
 						<p>
 							Use the <a href="/generator">card generation tool</a> to generate

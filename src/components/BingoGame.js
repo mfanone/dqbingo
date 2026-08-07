@@ -21,28 +21,11 @@ import {
 	getPresetPatterns,
 	getBallDisplay,
 	getLogoBallDisplay,
+	loadSettings,
 } from '../utils.js';
 
 // Chimes
-import {
-	chime1,
-	chime2,
-	chime3,
-	chime4,
-	chime5,
-	chime6,
-	chime7,
-	chime8,
-	chime9,
-	chime10,
-	chime11,
-	chime12,
-	pop1,
-	pop2,
-	pop3,
-	pop4,
-	shuffle,
-} from '../chimes';
+import { shuffle } from '../chimes';
 class BingoGame extends Component {
 	constructor(props) {
 		super(props);
@@ -51,24 +34,6 @@ class BingoGame extends Component {
 		this.totalBallsCalled = 0;
 		this.previousBall = null;
 		this.currentBall = null;
-		this.chimes = [
-			{ label: 'Chime 1', value: chime1 },
-			{ label: 'Chime 2', value: chime2 },
-			{ label: 'Chime 3', value: chime3 },
-			{ label: 'Chime 4', value: chime4 },
-			{ label: 'Chime 5', value: chime5 },
-			{ label: 'Chime 6', value: chime6 },
-			{ label: 'Chime 7', value: chime7 },
-			{ label: 'Chime 8', value: chime8 },
-			{ label: 'Chime 9', value: chime9 },
-			{ label: 'Chime 10', value: chime10 },
-			{ label: 'Chime 11', value: chime11 },
-			{ label: 'Chime 12', value: chime12 },
-			{ label: 'Pop 1', value: pop1 },
-			{ label: 'Pop 2', value: pop2 },
-			{ label: 'Pop 3', value: pop3 },
-			{ label: 'Pop 4', value: pop4 },
-		];
 		this.shuffleSound = shuffle;
 
 		// Patterns
@@ -77,15 +42,16 @@ class BingoGame extends Component {
 
 		let gameData = JSON.parse(localStorage.getItem('lpb-gameData'));
 		let gameState = JSON.parse(localStorage.getItem('lpb-gameState'));
+		let settings = loadSettings();
 
 		if (gameData && gameState) {
 			for (let key in gameData) {
 				this[key] = gameData[key];
 			}
-			this.state = gameState;
+			this.state = { ...gameState, ...settings };
 		} else {
 			// Set initial state
-			this.state = this.getInitialStateData();
+			this.state = { ...this.getInitialStateData(), ...settings };
 		}
 	}
 
@@ -93,12 +59,6 @@ class BingoGame extends Component {
 		return {
 			board: generateBingoBoard(),
 			previousCallList: [],
-			skipUnused: true,
-			wildBingo: false,
-			evensOdds: false,
-			chime: false,
-			selectedChime: this.chimes[0],
-			audibleShuffle: false,
 			selectedPattern: {
 				value: this.patternPlaceholder,
 				label: this.patternPlaceholder,
@@ -379,29 +339,6 @@ class BingoGame extends Component {
 	};
 
 	/* ------------------ Handlers */
-	handleCheckbox = (e) => {
-		let gamemode = e.currentTarget.dataset.gamemode;
-		switch (gamemode) {
-			case 'skip-unused':
-				this.setState({ skipUnused: e.currentTarget.checked });
-				break;
-			case 'wild-bingo':
-				this.setState({ wildBingo: e.currentTarget.checked });
-				break;
-			case 'evens-odds':
-				this.setState({ evensOdds: e.currentTarget.checked });
-				break;
-			case 'enable-chime':
-				this.setState({ chime: e.currentTarget.checked });
-				break;
-			case 'enable-shuffle-sound':
-				this.setState({ audibleShuffle: e.currentTarget.checked });
-				break;
-			default:
-				break;
-		}
-	};
-
 	handleUpdatePattern = (pattern, letter, index, slot) => {
 		pattern[letter][index] = !slot;
 		let unusedLetters = [];
@@ -576,18 +513,6 @@ class BingoGame extends Component {
 		}
 	}
 
-	/**
-	 * Choose Chime Function
-	 * Sets the selected chime audible
-	 *
-	 * @param   {event}  e  Event
-	 */
-	handleChooseChime = (e) => {
-		let chime = new Audio(e.value);
-		chime.play();
-		this.setState({ selectedChime: e });
-	};
-
 	/* ------------------- Render */
 	render() {
 		return (
@@ -677,147 +602,6 @@ class BingoGame extends Component {
 								<button onClick={this.toggleResetModal}>Reset Board</button>
 							</section>
 							{this.resetConfirmationModalDisplay}
-						</div>
-
-						{/* ----------- Game Settings ------------- */}
-						<div className="col grow no-wrap padding-vertical-xxlg padding-horizontal-md white-text">
-							<section className="game-settings">
-								{/* ----------- Gameplay Settings ---------- */}
-								<div className="row align-top justify-start">
-									<div className="col shrink min-size-150 padding-horizontal-lg padding-vertical-md">
-										<h6>Gameplay Settings:</h6>
-									</div>
-									<div className="col grow min-size-150 padding-horizontal-lg">
-										<div className="row justify-start">
-											<div
-												className="col padding-right-xlg"
-												data-disabled={this.totalBallsCalled > 0}
-											>
-												<label
-													className={
-														this.state.wildBingo ? 'toggle checked' : 'toggle'
-													}
-												>
-													<span className="toggle-span"></span>
-													<span>Wild Bingo</span>
-													<input
-														type="checkbox"
-														data-gamemode="wild-bingo"
-														onChange={this.handleCheckbox}
-														checked={this.state.wildBingo}
-													></input>
-												</label>
-											</div>
-											<div
-												className="col padding-right-xlg"
-												data-disabled={
-													!this.state.wildBingo || this.totalBallsCalled > 0
-												}
-											>
-												<label
-													className={
-														this.state.evensOdds ? 'toggle checked' : 'toggle'
-													}
-												>
-													<span className="toggle-span"></span>
-													<span>Evens/Odds</span>
-													<input
-														type="checkbox"
-														data-gamemode="evens-odds"
-														onChange={this.handleCheckbox}
-														checked={this.state.evensOdds}
-													></input>
-												</label>
-											</div>
-											<div className="col padding-right-xlg">
-												<label
-													className={
-														this.state.skipUnused ? 'toggle checked' : 'toggle'
-													}
-												>
-													<span className="toggle-span"></span>
-													<span>Skip Unused Numbers</span>
-													<input
-														type="checkbox"
-														data-gamemode="skip-unused"
-														onChange={this.handleCheckbox}
-														checked={this.state.skipUnused}
-													></input>
-												</label>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								{/* ----------- Chime ----------- */}
-								<div className="row no-wrap align-start justify-start">
-									<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-										<h6>Audible Chime:</h6>
-									</div>
-
-									<div className="col grow padding-horizontal-lg">
-										<label
-											className={
-												this.state.chime ? 'toggle checked' : 'toggle'
-											}
-										>
-											<span className="toggle-span"></span>
-											<span>Enable</span>
-											<input
-												type="checkbox"
-												data-gamemode="enable-chime"
-												onChange={this.handleCheckbox}
-												checked={this.state.chime}
-											></input>
-										</label>
-									</div>
-								</div>
-
-								{/* ----------- Chime Selection ----------- */}
-								<div
-									className="row no-wrap align-start justify-start"
-									data-visibility={this.state.chime ? 'show' : 'hide'}
-								>
-									<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-										<h6>Chime Selection:</h6>
-									</div>
-
-									<div className="col grow padding-horizontal-lg">
-										<Select
-											className="select-input"
-											placeholder="Choose Chime"
-											menuPlacement="auto"
-											value={this.state.selectedChime}
-											onChange={this.handleChooseChime}
-											options={this.chimes}
-										/>
-									</div>
-								</div>
-
-								{/* ----------- Audible Shuffle ----------- */}
-								<div className="row no-wrap align-start justify-start">
-									<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-										<h6>Audible Shuffle:</h6>
-									</div>
-
-									<div className="col grow padding-horizontal-lg">
-										<label
-											className={
-												this.state.audibleShuffle ? 'toggle checked' : 'toggle'
-											}
-										>
-											<span className="toggle-span"></span>
-											<span>Enable</span>
-											<input
-												type="checkbox"
-												data-gamemode="enable-shuffle-sound"
-												onChange={this.handleCheckbox}
-												checked={this.state.audibleShuffle}
-											></input>
-										</label>
-									</div>
-								</div>
-							</section>
 						</div>
 					</div>
 				</section>

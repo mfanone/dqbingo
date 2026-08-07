@@ -1,5 +1,25 @@
 import React from 'react';
 import logo from './images/logo.svg';
+import {
+  chime1,
+  chime2,
+  chime3,
+  chime4,
+  chime5,
+  chime6,
+  chime7,
+  chime8,
+  chime9,
+  chime10,
+  chime11,
+  chime12,
+  pop1,
+  pop2,
+  pop3,
+  pop4,
+} from './chimes';
+
+const SETTINGS_STORAGE_KEY = 'lpb-settings';
 
 /**
  * Generates the needed bingo balls
@@ -52,6 +72,67 @@ export const generateBingoBoard = () => {
  */
 export const getRandomBingoNumber = () => {
   return Math.floor(Math.random() * 75) + 1;
+}
+
+/**
+ * Returns the list of available audible chimes
+ *
+ * @var  {Array}
+ */
+export const getChimeOptions = () => {
+  return [
+    { label: 'Chime 1', value: chime1 },
+    { label: 'Chime 2', value: chime2 },
+    { label: 'Chime 3', value: chime3 },
+    { label: 'Chime 4', value: chime4 },
+    { label: 'Chime 5', value: chime5 },
+    { label: 'Chime 6', value: chime6 },
+    { label: 'Chime 7', value: chime7 },
+    { label: 'Chime 8', value: chime8 },
+    { label: 'Chime 9', value: chime9 },
+    { label: 'Chime 10', value: chime10 },
+    { label: 'Chime 11', value: chime11 },
+    { label: 'Chime 12', value: chime12 },
+    { label: 'Pop 1', value: pop1 },
+    { label: 'Pop 2', value: pop2 },
+    { label: 'Pop 3', value: pop3 },
+    { label: 'Pop 4', value: pop4 },
+  ];
+}
+
+/**
+ * Returns the default game settings
+ *
+ * @var  {Object}
+ */
+export const getDefaultSettings = () => {
+  return {
+    skipUnused: true,
+    wildBingo: false,
+    evensOdds: false,
+    chime: false,
+    selectedChime: getChimeOptions()[0],
+    audibleShuffle: false,
+  };
+}
+
+/**
+ * Loads persisted game settings, merged over the defaults
+ *
+ * @var  {Object}
+ */
+export const loadSettings = () => {
+  let saved = JSON.parse(localStorage.getItem(SETTINGS_STORAGE_KEY));
+  return { ...getDefaultSettings(), ...(saved || {}) };
+}
+
+/**
+ * Persists game settings
+ *
+ * @var  {Object}  settings
+ */
+export const saveSettings = (settings) => {
+  localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
 }
 
 /**

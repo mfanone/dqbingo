@@ -10,6 +10,7 @@ import BingoGame from './components/BingoGame.js';
 import CardGenerator from './components/pages/CardGenerator.js';
 import Help from './components/pages/Help.js';
 import Patterns from './components/pages/Patterns.js';
+import Settings from './components/pages/Settings.js';
 
 const routing = (
 	<Router>
@@ -29,6 +30,9 @@ const routing = (
 							<Link to="/generator">Cards</Link>
 						</li>
 						<li>
+							<Link to="/settings">Settings</Link>
+						</li>
+						<li>
 							<Link to="/help">Help</Link>
 						</li>
 					</ul>
@@ -39,6 +43,7 @@ const routing = (
 		<Route exact path="/" component={BingoGame} />
 		<Route path="/generator" component={CardGenerator} />
 		<Route path="/patterns" component={Patterns} />
+		<Route path="/settings" component={Settings} />
 		<Route path="/help" component={Help} />
 	</Router>
 );
