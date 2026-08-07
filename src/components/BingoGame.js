@@ -15,7 +15,7 @@ import Pattern from './subcomponents/Pattern.js';
 import CallHistory from './subcomponents/CallHistory.js';
 
 // Images
-import logo from '../images/logo.svg';
+import logo from '../images/dqb-graphic.png';
 
 // Utilities
 import {
@@ -528,7 +528,7 @@ class BingoGame extends Component {
 							{/* -------- Logo --------- */}
 							<div className="row justify-center margin-bottom-lg">
 								<div className="logo-chip">
-									<img src={logo} alt="Let's Play Bingo!" className="logo" />
+									<img src={logo} alt="Drag Queen Bingo" className="logo" />
 								</div>
 							</div>
 
