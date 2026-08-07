@@ -103,6 +103,7 @@ class BingoGame extends Component {
 			evensOdds: false,
 			chime: false,
 			selectedChime: this.chimes[0],
+			audibleShuffle: false,
 			selectedPattern: {
 				value: this.patternPlaceholder,
 				label: this.patternPlaceholder,
@@ -273,7 +274,7 @@ class BingoGame extends Component {
 		let duration = 1500;
 		for (let i = 0; i <= duration; i++) {
 			window.setTimeout(() => {
-				if (i === 0) {
+				if (i === 0 && this.state.audibleShuffle) {
 					sound.play();
 				}
 				if (i > 0 && i <= duration) {
@@ -281,7 +282,9 @@ class BingoGame extends Component {
 					this.setState({ board: balls });
 				}
 				if (i === duration) {
-					sound.pause();
+					if (this.state.audibleShuffle) {
+						sound.pause();
+					}
 					this.resetGame();
 				}
 			}, duration);
@@ -434,6 +437,9 @@ class BingoGame extends Component {
 				break;
 			case 'enable-chime':
 				this.setState({ chime: e.currentTarget.checked });
+				break;
+			case 'enable-shuffle-sound':
+				this.setState({ audibleShuffle: e.currentTarget.checked });
 				break;
 			default:
 				break;
@@ -948,6 +954,30 @@ class BingoGame extends Component {
 												onChange={this.handleChooseChime}
 												options={this.chimes}
 											/>
+										</div>
+									</div>
+
+									{/* ----------- Audible Shuffle ----------- */}
+									<div className="row no-wrap align-start justify-start">
+										<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
+											<h6>Audible Shuffle:</h6>
+										</div>
+
+										<div className="col grow padding-horizontal-lg">
+											<label
+												className={
+													this.state.audibleShuffle ? 'toggle checked' : 'toggle'
+												}
+											>
+												<span className="toggle-span"></span>
+												<span>Enable</span>
+												<input
+													type="checkbox"
+													data-gamemode="enable-shuffle-sound"
+													onChange={this.handleCheckbox}
+													checked={this.state.audibleShuffle}
+												></input>
+											</label>
 										</div>
 									</div>
 								</div>

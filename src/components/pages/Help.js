@@ -176,8 +176,8 @@ class Help extends React.Component {
 							<strong>Reset Board</strong> - this button is always available.
 							Clicking this button will show a pop up asking you if you're sure
 							you want to reset the board. Confirming will play a quick shuffle
-							animation and sound before wiping out the current game completely,
-							so use with caution.
+							animation (with sound, if Audible Shuffle is enabled) before
+							wiping out the current game completely, so use with caution.
 						</p>
 
 						<section className="padding-top-sm dark-blue-bg"></section>
@@ -192,6 +192,11 @@ class Help extends React.Component {
 						<p>
 							When enabled you will see a list of chimes to choose from. When
 							you select a chime it will play a sample of the selection.
+						</p>
+						<p className="small-text">
+							<strong>Note:</strong> The <strong>Audible Shuffle</strong> toggle
+							below it controls whether a shuffle sound plays when you reset the
+							board. It is disabled by default.
 						</p>
 
 						<section className="padding-top-sm dark-blue-bg"></section>
