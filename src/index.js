@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 // Styles
 import './sass/main.scss';
 // Custom Components
 import BingoGame from './components/BingoGame.js';
-import CardGenerator from './components/pages/CardGenerator.js';
 import Help from './components/pages/Help.js';
 import Patterns from './components/pages/Patterns.js';
 import Settings from './components/pages/Settings.js';
+import FloatingPanel from './components/subcomponents/FloatingPanel.js';
+import GearIcon from './components/subcomponents/icons/GearIcon.js';
+import HelpIcon from './components/subcomponents/icons/HelpIcon.js';
 
 function App() {
-	const [menuOpen, setMenuOpen] = useState(false);
-	const closeMenu = () => setMenuOpen(false);
+	const [settingsOpen, setSettingsOpen] = useState(false);
+	const [helpOpen, setHelpOpen] = useState(false);
+
+	const closeSettings = () => setSettingsOpen(false);
+	const closeHelp = () => setHelpOpen(false);
+	const openSettingsFromHelp = () => {
+		setHelpOpen(false);
+		setSettingsOpen(true);
+	};
 
 	return (
 		<Router basename={process.env.PUBLIC_URL}>
@@ -20,48 +29,38 @@ function App() {
 				<div className="container row align-center justify-end">
 					<div className="col shrink">
 						<button
-							className="menu-toggle"
-							onClick={() => setMenuOpen(!menuOpen)}
-							aria-label="Toggle menu"
-							aria-expanded={menuOpen}
+							className="icon-btn"
+							onClick={() => setSettingsOpen(true)}
+							aria-label="Settings"
 						>
-							<span></span>
-							<span></span>
-							<span></span>
+							<GearIcon />
+						</button>
+					</div>
+					<div className="col shrink">
+						<button
+							className="icon-btn"
+							onClick={() => setHelpOpen(true)}
+							aria-label="Help"
+						>
+							<HelpIcon />
 						</button>
 					</div>
 				</div>
-				<nav className={menuOpen ? 'site-menu open' : 'site-menu'}>
-					<ul className="menu">
-						<li>
-							<Link to="/" onClick={closeMenu}>
-								Play
-							</Link>
-						</li>
-						<li>
-							<Link to="/generator" onClick={closeMenu}>
-								Cards
-							</Link>
-						</li>
-						<li>
-							<Link to="/settings" onClick={closeMenu}>
-								Settings
-							</Link>
-						</li>
-						<li>
-							<Link to="/help" onClick={closeMenu}>
-								Help
-							</Link>
-						</li>
-					</ul>
-				</nav>
 			</header>
 
 			<Route exact path="/" component={BingoGame} />
-			<Route path="/generator" component={CardGenerator} />
 			<Route path="/patterns" component={Patterns} />
-			<Route path="/settings" component={Settings} />
-			<Route path="/help" component={Help} />
+
+			{settingsOpen && (
+				<FloatingPanel title="Settings" onClose={closeSettings}>
+					<Settings onClose={closeSettings} />
+				</FloatingPanel>
+			)}
+			{helpOpen && (
+				<FloatingPanel title="Help" onClose={closeHelp}>
+					<Help onOpenSettings={openSettingsFromHelp} />
+				</FloatingPanel>
+			)}
 		</Router>
 	);
 }

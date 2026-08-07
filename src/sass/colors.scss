@@ -6,9 +6,6 @@
 .dark-red-bg {
   background-color: #7b0000 !important;
 }
-.dark-blue-bg {
-  background-color: var(--primary-color) !important;
-}
 .white-bg {
   background-color: white !important;
 }
@@ -38,43 +35,4 @@
 }
 .yellow-text {
   color: #ffca28 !important;
-}
-
-[data-color="red"] {
-  background-color: red;
-}
-[data-color="orange"] {
-  background-color: orange;
-  .card-letter { color: black !important; }
-}
-[data-color="yellow"] {
-  background-color: yellow;
-  .card-letter { color: black !important; }
-}
-[data-color="green"] {
-  background-color: green;
-}
-[data-color="blue"] {
-  background-color: blue;
-}
-[data-color="purple"] {
-  background-color: purple;
-}
-[data-color="aqua"] {
-  background-color: aqua;
-  .card-letter { color: black !important; }
-}
-[data-color="brown"] {
-  background-color: brown;
-}
-[data-color="gray"] {
-  background-color: gray;
-  .card-letter { color: black !important; }
-}
-[data-color="pink"] {
-  background-color: pink;
-  .card-letter { color: black !important; }
-}
-[data-color="dk-gray"] {
-  background-color: rgb(53, 53, 53);
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class Help extends React.Component {
 	componentDidMount() {
@@ -61,7 +60,6 @@ class Help extends React.Component {
 							</li>
 						</ol>
 
-						<section className="padding-top-sm dark-blue-bg"></section>
 						{/* --------------- How do I use LPB? --------------- */}
 						<h2 id="what-is-lpb">What is Let's Play Bingo?</h2>
 						<p>
@@ -83,7 +81,6 @@ class Help extends React.Component {
 							</em>
 						</p>
 
-						<section className="padding-top-sm dark-blue-bg"></section>
 						{/* --------------- Game Play --------------- */}
 						<h3 id="gameplay">How do I play?</h3>
 						<p>
@@ -103,16 +100,16 @@ class Help extends React.Component {
 							numbers, and reset the game as necessary when someone calls bingo.
 						</p>
 						<p>
-							Choose what settings you wish to play with on the{' '}
-							<Link to="/settings">Settings</Link> page. You can learn more
-							about the available game modes by reviewing the{' '}
+							Choose what settings you wish to play with using the{' '}
+							<button
+								className="link-button"
+								onClick={this.props.onOpenSettings}
+							>
+								Settings
+							</button>{' '}
+							icon in the header. You can learn more about the available game
+							modes by reviewing the{' '}
 							<a href="#game-modes">game modes</a> section below.
-						</p>
-						<p>
-							Use the <a href="/generator">card generation tool</a> to generate
-							and print out bingo cards to distribute among your players. If
-							playing virtually, you can have your players visit the site
-							directly to get cards for themselves.
 						</p>
 						<p>
 							Once players have their cards, the caller should share their
@@ -175,7 +172,6 @@ class Help extends React.Component {
 							wiping out the current game completely, so use with caution.
 						</p>
 
-						<section className="padding-top-sm dark-blue-bg"></section>
 
 						{/* --------------- Audible Chime --------------- */}
 						<h2 id="audible-chime">Audible Chime</h2>
@@ -194,7 +190,6 @@ class Help extends React.Component {
 							board. It is disabled by default.
 						</p>
 
-						<section className="padding-top-sm dark-blue-bg"></section>
 
 						{/* --------------- GAME MODES --------------- */}
 						<h2 id="game-modes">Game Modes</h2>
@@ -232,7 +227,6 @@ class Help extends React.Component {
 							is even or odd.
 						</p>
 
-						<section className="padding-top-sm dark-blue-bg"></section>
 
 						<h2 id="troubleshooting">Troubleshooting</h2>
 						<p>

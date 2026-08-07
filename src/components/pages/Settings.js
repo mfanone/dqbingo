@@ -55,10 +55,12 @@ class Settings extends React.Component {
 						<h1 className="no-margin">Settings</h1>
 						<p>
 							These settings take effect the next time you start a game on
-							the <Link to="/">Play</Link> page.
+							the{' '}
+							<Link to="/" onClick={this.props.onClose}>
+								Play
+							</Link>{' '}
+							page.
 						</p>
-
-						<section className="padding-top-sm dark-blue-bg"></section>
 
 						{/* ----------- Gameplay Settings ---------- */}
 						<div className="row align-top justify-start">
