@@ -10,6 +10,13 @@ html {
 	padding: 0;
 }
 
+/* Full Screen */
+html:fullscreen,
+html:-webkit-full-screen {
+	min-height: 100%;
+	background-color: #222222;
+}
+
 /* Header */
 header {
 	padding: 1rem;
