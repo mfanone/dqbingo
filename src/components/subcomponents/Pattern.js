@@ -17,7 +17,7 @@ class Pattern extends React.Component {
     const pattern = JSON.parse(JSON.stringify(this.props.pattern.pattern));
 
     return (
-      <div id="bingopattern" className="notranslate">
+      <div id="bingopattern">
         {Object.keys(pattern).map((letter, index) => {
           return(
             <div key={letter + index} className="row vertical-row text-center">

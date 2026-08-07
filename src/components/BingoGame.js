@@ -927,13 +927,13 @@ class BingoGame extends Component {
 							{/* -------- Digital Displays --------- */}
 							<div className="row no-wrap margin-bottom-lg justify-space-between white-text">
 								<div className="col text-center margin-sm">
-									<div className="callNumber notranslate">
+									<div className="callNumber">
 										{this.numberDisplay}
 									</div>
 									<div className="callNumber-text uppercase">Total Calls</div>
 								</div>
 								<div className="col text-center margin-sm">
-									<div className="callNumber notranslate">
+									<div className="callNumber">
 										{this.previousCallDisplay}
 									</div>
 									<div className="callNumber-text uppercase">Previous Call</div>
@@ -971,7 +971,7 @@ class BingoGame extends Component {
 				<section className="game-controls dark-bg">
 					<div className="container row justify-start align-start">
 						{/* ----------- Current Ball Display ------------- */}
-						<div className="col min-size-250 padding-vertical-xxlg padding-horizontal-md notranslate">
+						<div className="col min-size-250 padding-vertical-xxlg padding-horizontal-md">
 							{this.currentBallDisplay}
 
 							<CallHistory
@@ -1335,43 +1335,6 @@ class BingoGame extends Component {
 									</div>
 								</div>
 							</section>
-						</div>
-
-						{/* ----------- Mini Updates ------------- */}
-						<div className="col grow min-size-350 padding-vertical-xxlg padding-horizontal-xxlg white-text">
-							<h4 className="margin-vertical-md">Retired Edition</h4>
-							<p className="wrap-text small-text">
-								This edition of Let's Play Bingo has been retired. Please try
-								the latest edition that has many improvements at{' '}
-								<a
-									href="https://letsplaybingo.io/"
-									target="_blank"
-									rel="noreferrer"
-								>
-									Let's Play Bingo
-								</a>
-								!
-							</p>
-							<p className="wrap-text small-text">
-								You can also check out these other editions:
-								<br />
-								<a
-									href="https://classic.letsplaybingo.io/"
-									target="_blank"
-									rel="noreferrer"
-								>
-									Let's Play Bingo - Classic
-								</a>
-								<br />
-								<a
-									href="https://90ball.letsplaybingo.io/"
-									target="_blank"
-									rel="noreferrer"
-								>
-									Let's Play Bingo - 90 Ball
-								</a>
-								<br />
-							</p>
 						</div>
 					</div>
 				</section>

@@ -36,7 +36,7 @@ class About extends React.Component {
 					<div className="col">
 						<h2>Love the app? Want to show your support?</h2>
 						<p>
-							<span className="notranslate">Let's Play Bingo</span> is
+							Let's Play Bingo is
 							completely <strong>ad free</strong> and is run by a single
 							developer. If you'd like to contribute toward the costs associated
 							with running a website like this, or want to tip the developer

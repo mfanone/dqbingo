@@ -1076,7 +1076,7 @@ export const getPresetPatterns = () => {
  */
 export const getLogoBallDisplay = () => {
   return (
-    <div className="ball-display white relative notranslate">
+    <div className="ball-display white relative">
       <div className="content">
         <div className="ball-content">
           <img src={logo} alt="Lets Play Bingo Logo"/>
@@ -1093,7 +1093,7 @@ export const getLogoBallDisplay = () => {
  */
 export const getBallDisplay = (ball) => {
   return(
-    <div className={"ball-display " + ball.color + " relative notranslate"}>
+    <div className={"ball-display " + ball.color + " relative"}>
       <div className="content">
         <div className="ball-content">
           <div className="ball-letter">{ball.letter}</div>

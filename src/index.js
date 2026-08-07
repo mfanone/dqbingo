@@ -39,19 +39,7 @@ const routing = (
 						<li>
 							<Link to="/about">About / Donate</Link>
 						</li>
-						<li>
-							<a
-								href="https://letsplaybingo.io"
-								target="_blank"
-								rel="noreferrer"
-							>
-								Latest Edition
-							</a>
-						</li>
 					</ul>
-				</div>
-				<div className="col shrink text-right margin-left-lg">
-					<div id="google_translate_element"></div>
 				</div>
 			</div>
 		</header>

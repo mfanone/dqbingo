@@ -28,7 +28,7 @@ class CallHistory extends React.Component {
           <div className="modal">
             <h4 className="margin-md">Full Call History</h4>
             <div className="x-small-text margin-bottom-lg">Most recent call listed first, left to right, top to bottom.</div>
-            <div className="previous-calls notranslate">
+            <div className="previous-calls">
               {ballHistory.map(call => {
                 return (
                   <div key={call.number} className={call.color}><span>{call.letter}{call.number}</span></div>
@@ -61,7 +61,7 @@ class CallHistory extends React.Component {
         return (
           <div className="margin-vertical-xlg">
             <h6 className="text-center">Last 5 Calls</h6>
-            <div className="previous-calls padding-vertical-xlg notranslate">
+            <div className="previous-calls padding-vertical-xlg">
               {last5Calls.map(call => {
                 return (
                   <div key={call.number} className={call.color}><span>{call.letter}{call.number}</span></div>

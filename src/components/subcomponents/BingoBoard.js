@@ -22,7 +22,7 @@ class BingoBoard extends Component {
       <div id="board" className="flex">
         {Object.keys(this.state.board).map((letter, i) => {
           return(
-            <div key={"board-row-" + letter} className="row no-wrap set-size text-center notranslate">
+            <div key={"board-row-" + letter} className="row no-wrap set-size text-center">
               <div className="col board-letter white-bg red-text">{letter}</div>
               {
                 this.state.board[letter].map((number) => {

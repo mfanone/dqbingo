@@ -18,7 +18,7 @@ class PatternDisplay extends React.Component {
     return (
       <section>
         <h5>{pattern.label}</h5>
-        <div className="bingopattern container notranslate">
+        <div className="bingopattern container">
           {Object.keys(pattern.pattern).map((letter, index) => {
             return(
               <div key={letter + index} className="row vertical-row text-center">
