@@ -42,9 +42,6 @@ class Help extends React.Component {
 										<a href="#gameplay-buttons">Gameplay Buttons</a>
 									</li>
 									<li>
-										<a href="#audible-caller">Audible Caller</a>
-									</li>
-									<li>
 										<a href="#audible-chime">Audible Chime</a>
 									</li>
 									<li>
@@ -185,56 +182,6 @@ class Help extends React.Component {
 
 						<section className="padding-top-sm dark-blue-bg"></section>
 
-						{/* --------------- Audible Bingo Caller --------------- */}
-						<h2 id="audible-caller">Audible Caller</h2>
-						<p>
-							Let's Play Bingo utilizes an experimental technology called the
-							Web Speech Synthesis API. This is primarily used for screen
-							readers to read text back to vision impaired people. Support for
-							this feature depends on your device and browser combination. If
-							speech synthesis is not supported you will receive a message
-							indiciating that the "Bingo Caller" option is not available for
-							you. Please try another browser or different device if you'd like
-							to use this feature.
-						</p>
-
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
-
-						<h4>Caller Selection</h4>
-						<p>
-							If speech synthesis is available and you have enabled the audible
-							caller, you will see a list of voices that are available for use.
-							The voice selections can vary greatly as they are depdendant upon
-							what the device's manufacturer has made available.
-						</p>
-						<p className="small-text">
-							<strong>Note:</strong> This is not something controlled by the
-							Let's Play Bingo application.
-						</p>
-
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
-
-						<h4>Double Call Mode</h4>
-						<p>
-							When enabled Double Call mode will audibly call the number a
-							second time. <em>For example:</em> the caller will read out I26
-							followed by "I 2 6" with each letter and number separated
-							phonetically. This is meant to emulate how callers call the
-							numbers in bingo halls.
-						</p>
-
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
-
-						<h4>Chatty Mode</h4>
-						<p>
-							When enabled Chatty mode will enable additional chatter from the
-							audible caller. <em>For example:</em> at the start of every game
-							the caller will say "Let's Play Bingo!" or if using the Wild Bingo
-							game mode, "Let's Play Wild Bingo!".
-						</p>
-
-						<section className="padding-top-sm dark-blue-bg"></section>
-
 						{/* --------------- Audible Chime --------------- */}
 						<h2 id="audible-chime">Audible Chime</h2>
 						<p>
@@ -245,12 +192,6 @@ class Help extends React.Component {
 						<p>
 							When enabled you will see a list of chimes to choose from. When
 							you select a chime it will play a sample of the selection.
-						</p>
-						<p className="small-text">
-							<strong>Note:</strong> This mode can be used in combination with
-							the audible bingo caller, or by itself. If used with the audible
-							bingo caller it will delay the voice caller by 1 second to
-							accomodate for playing the chime sound.
 						</p>
 
 						<section className="padding-top-sm dark-blue-bg"></section>
