@@ -6,10 +6,8 @@ import './sass/main.scss';
 // Images
 import logo from './images/logo.svg';
 // Custom Components
-import About from './components/pages/About.js';
 import BingoGame from './components/BingoGame.js';
 import CardGenerator from './components/pages/CardGenerator.js';
-import Donate from './components/pages/Donate.js';
 import Help from './components/pages/Help.js';
 import Privacy from './components/pages/Privacy.js';
 import ReleaseNotes from './components/pages/ReleaseNotes.js';
@@ -36,17 +34,12 @@ const routing = (
 						<li>
 							<Link to="/help">Help</Link>
 						</li>
-						<li>
-							<Link to="/about">About / Donate</Link>
-						</li>
 					</ul>
 				</div>
 			</div>
 		</header>
 
 		<Route exact path="/" component={BingoGame} />
-		<Route path="/about" component={About} />
-		<Route path="/donate" component={Donate} />
 		<Route path="/generator" component={CardGenerator} />
 		<Route path="/terms" component={Terms} />
 		<Route path="/patterns" component={Patterns} />
