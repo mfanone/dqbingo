@@ -1,10 +1,8 @@
 {
   "files": {
     "main.css": "/dqbingo/static/css/main.7b2c0851.css",
-    "main.js": "/dqbingo/static/js/main.20c61731.js",
+    "main.js": "/dqbingo/static/js/main.6f9ce6b0.js",
     "static/media/shuffle.wav": "/dqbingo/static/media/shuffle.61b100e7a51014b7a8dc.wav",
-    "static/media/venmo.jpeg": "/dqbingo/static/media/venmo.903433d9b09398265e23.jpeg",
-    "static/media/paypalme.jpeg": "/dqbingo/static/media/paypalme.5b00fea4fb9b2e18c348.jpeg",
     "static/media/Roboto-Medium.woff": "/dqbingo/static/media/Roboto-Medium.61c265591865cecb1c3d.woff",
     "static/media/Roboto-Black.woff": "/dqbingo/static/media/Roboto-Black.c0379944e86304e2d36e.woff",
     "static/media/Roboto-Bold.woff": "/dqbingo/static/media/Roboto-Bold.75a1a5b5582b236e0fe3.woff",
@@ -13,7 +11,6 @@
     "static/media/Roboto-Light.woff": "/dqbingo/static/media/Roboto-Light.19a99746405e8730f34c.woff",
     "static/media/RobotoCondensed-Regular.woff": "/dqbingo/static/media/RobotoCondensed-Regular.490215d707d82e737710.woff",
     "static/media/RobotoCondensed-Light.woff": "/dqbingo/static/media/RobotoCondensed-Light.00b97f2125d0ffa0909b.woff",
-    "static/media/buyacoffee.png": "/dqbingo/static/media/buyacoffee.1f153f781ecfa7f19559.png",
     "static/media/chime11.mp3": "/dqbingo/static/media/chime11.02daa1b64e751b66131e.mp3",
     "static/media/chime12.mp3": "/dqbingo/static/media/chime12.56f4e130ebaa3180f9ea.mp3",
     "static/media/chime1.mp3": "/dqbingo/static/media/chime1.619a4e1d62b05458bdef.mp3",
@@ -34,10 +31,10 @@
     "static/media/digital-7.woff": "/dqbingo/static/media/digital-7.4eed57244bb0a0bd583d.woff",
     "index.html": "/dqbingo/index.html",
     "main.7b2c0851.css.map": "/dqbingo/static/css/main.7b2c0851.css.map",
-    "main.20c61731.js.map": "/dqbingo/static/js/main.20c61731.js.map"
+    "main.6f9ce6b0.js.map": "/dqbingo/static/js/main.6f9ce6b0.js.map"
   },
   "entrypoints": [
     "static/css/main.7b2c0851.css",
-    "static/js/main.20c61731.js"
+    "static/js/main.6f9ce6b0.js"
   ]
 }
