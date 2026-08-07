@@ -10,16 +10,10 @@ html {
 	padding: 0;
 }
 
-/* Header & Footer */
-header,
-footer {
-	padding: 1rem;
-}
+/* Header */
 header {
+	padding: 1rem;
 	border-bottom: 5px solid var(--primary-color);
-}
-footer {
-	border-top: 5px solid var(--primary-color);
 }
 ul li {
 	white-space: normal;

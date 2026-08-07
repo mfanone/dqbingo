@@ -9,9 +9,6 @@ import logo from './images/logo.svg';
 import BingoGame from './components/BingoGame.js';
 import CardGenerator from './components/pages/CardGenerator.js';
 import Help from './components/pages/Help.js';
-import Privacy from './components/pages/Privacy.js';
-import ReleaseNotes from './components/pages/ReleaseNotes.js';
-import Terms from './components/pages/Terms.js';
 import Patterns from './components/pages/Patterns.js';
 
 const routing = (
@@ -41,26 +38,8 @@ const routing = (
 
 		<Route exact path="/" component={BingoGame} />
 		<Route path="/generator" component={CardGenerator} />
-		<Route path="/terms" component={Terms} />
 		<Route path="/patterns" component={Patterns} />
-		<Route path="/privacy" component={Privacy} />
-		<Route path="/releases" component={ReleaseNotes} />
 		<Route path="/help" component={Help} />
-
-		<footer>
-			<div className="container row three-cols align-center">
-				<div className="col">For entertainment purposes only.</div>
-				<div className="col text-center">
-					&copy; 2017 - {new Date().getFullYear()}{' '}
-					<a href="https://letsplaybingo.io">Let's Play Bingo</a>
-				</div>
-				<div className="col text-right">
-					<Link to="/releases">Release Notes</Link> |{' '}
-					<Link to="/terms">Terms of Use</Link> |{' '}
-					<Link to="/privacy">Cookies &amp; Privacy Policy</Link>
-				</div>
-			</div>
-		</footer>
 	</Router>
 );
 ReactDOM.render(routing, document.getElementById('root'));

@@ -40,17 +40,6 @@
     flex: none !important;
   }
 
-  // Footer
-  footer .row {
-    flex-flow: column;
-    text-align: center;
-    > .col {
-      width: 100% !important;
-      text-align: center;
-      padding: 0.5em;
-    }
-  }
-
   // Board display
   .board-block {
     > .row {
