@@ -99,8 +99,7 @@ class Help extends React.Component {
 						<p>
 							First choose someone to be the caller/controller of the game
 							board. This person will manage game settings, handle calling the
-							numbers, starting/stopping autoplay, and reset the game as
-							necessary when someone calls bingo.
+							numbers, and reset the game as necessary when someone calls bingo.
 						</p>
 						<p>
 							Choose what settings you wish to play with. You can learn more
@@ -163,14 +162,8 @@ class Help extends React.Component {
 						</p>
 						<p>
 							<strong>Call Next Number</strong> - this button only appears if a
-							game is in play. It will be disabled if autoplay is running.
-							Clicking this button will call the next number and display it as
-							flashing on the board.
-						</p>
-						<p>
-							<strong>Start Autoplay / Pause Autoplay</strong> - this button
-							starts the autoplay function or pauses it depending on if it is
-							currently running or not.
+							game is in play. Clicking this button will call the next number
+							and display it as flashing on the board.
 						</p>
 						<p>
 							<strong>Reset Board</strong> - this button is always available.
@@ -203,24 +196,6 @@ class Help extends React.Component {
 
 						{/* --------------- GAME MODES --------------- */}
 						<h2 id="game-modes">Game Modes</h2>
-						<h3>Manual Calling Mode</h3>
-						<p>
-							This gameplay style is designed for those who have a physical
-							bingo ball cage or caller and merely want the use of a board to
-							display the called numbers on. When this game mode is active the
-							user will be able to click on the numbers to mark them as
-							called/active. Clicking on a called number a 2nd time will mark it
-							as uncalled and update the previous number if necessary.
-						</p>
-						<p className="small-text">
-							<strong>Note:</strong> This mode can ONLY be activated at the
-							beginning before any balls are called, and the option will be
-							disabled if a game is running. When activated it will disable all
-							other game modes, options and buttons.
-						</p>
-
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
-
 						<h3>Skip Unused Numbers</h3>
 						<p>
 							This game mode when used in combination with selecting a pattern
@@ -230,10 +205,10 @@ class Help extends React.Component {
 						</p>
 						<p className="small-text">
 							<strong>Note:</strong> it will still display the numbers on the
-							board as if they were called, but if autoplay is on it will mark
-							them as called but skip past them and call a new ball. No numbers
-							are skipped in patterns that begin with the word Crazy because
-							they are expected to be played in any direction.
+							board as if they were called, but it will mark them as called and
+							skip past them to call a new ball. No numbers are skipped in
+							patterns that begin with the word Crazy because they are expected
+							to be played in any direction.
 						</p>
 
 						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
@@ -245,11 +220,6 @@ class Help extends React.Component {
 							bingo number. <em>For Example:</em> If the wild number is G56, you
 							would mark every number ending in 6. This game mode can be used on
 							any pattern.
-						</p>
-						<p className="small-text">
-							<strong>Note:</strong> Even if you select autoplay, when playing
-							Wild Bingo the game will pause on the initial call to give players
-							time to dab all of the numbers.
 						</p>
 
 						<h4>Wild Bingo: Evens/Odds</h4>
@@ -285,9 +255,8 @@ class Help extends React.Component {
 						<h4 className="no-margin">Check your game settings</h4>
 						<p className="margin-top-none">
 							Double check your settings to ensure that you're not inadvertently
-							disabling functionality. <em>For example</em>, if you enable
-							manual calling mode, all buttons will be disabled. Or if you have
-							skip unused numbers enabled and have a blank pattern then call a
+							disabling functionality. <em>For example</em>, if you have skip
+							unused numbers enabled and have a blank pattern then call a
 							number it'll call all numbers.
 						</p>
 

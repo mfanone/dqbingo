@@ -114,40 +114,6 @@ div[class$="-indicatorContainer"] svg {
   fill: #444444;
 }
 
-/* Slider */
-.rc-slider {
-  position: relative;
-  touch-action: none;
-  max-width: 300px;
-  min-width: 200px;
-
-  .rc-slider-rail,
-  .rc-slider-track {
-    height: 10px;
-    border-radius: 5px;
-  }
-  .rc-slider-track {
-    position: absolute;
-    top: 0;
-    background: #0c0c0c;
-    border: 1px solid #000000;
-  }
-  .rc-slider-rail {
-    background: #ffffff;
-  }
-  .rc-slider-handle {
-    cursor: grab;
-    touch-action: pan-x;
-    position: absolute;
-    background: #00477a;
-    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.5);
-    border-radius: 0;
-    width: 15px;
-    height: 24px;
-    margin-top: -16px;
-  }
-}
-
 /* Selects */
 .number-select {
   max-width: 250px;

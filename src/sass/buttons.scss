@@ -94,22 +94,4 @@ button {
 			border-color: var(--primary-color);
 		}
 	}
-	&.play-button {
-		background-color: green;
-		border-color: green;
-		&:hover {
-			background-color: darkgreen;
-			border-color: darkgreen;
-			color: white;
-		}
-	}
-	&.pause-button {
-		background-color: red;
-		border-color: red;
-		&:hover {
-			background-color: darkred;
-			border-color: darkred;
-			color: white;
-		}
-	}
 }

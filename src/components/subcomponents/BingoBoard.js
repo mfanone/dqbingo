@@ -4,9 +4,7 @@ class BingoBoard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      board: props.board,
-      manualMode: props.manualMode,
-      manualCall: props.manualCall
+      board: props.board
     }
   }
 
@@ -30,7 +28,7 @@ class BingoBoard extends Component {
                     <div key={number.display}
                         className={number.active ?  "col ball active" : 
                         number.called ?  "col ball called" : "col ball"}>
-                          {this.state.manualMode ? <button onClick={() => this.state.manualCall(number)}>{number.number}</button> : number.number}
+                          {number.number}
                     </div>
                   )
                 })

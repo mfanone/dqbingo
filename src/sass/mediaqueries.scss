@@ -16,23 +16,6 @@
     padding: 0.25em;
   }
 
-  // Slider
-  .slider {
-    flex: none;
-    display: block;
-    .col {
-      width: 55%;
-      vertical-align: middle;
-      flex: none !important;
-      display: inline-block !important;
-      &.shrink {
-        flex: none !important;
-        width: 15%;
-        margin: 0 !important;
-      }
-    }
-  }
-
   // Social icons
   .social.col {
     display: block;

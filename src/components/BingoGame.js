@@ -7,7 +7,6 @@
  */
 // Dependencies
 import React, { Component } from 'react';
-import Slider from 'rc-slider';
 import Select from 'react-select';
 
 // Custom Components
@@ -52,7 +51,6 @@ class BingoGame extends Component {
 		this.totalBallsCalled = 0;
 		this.previousBall = null;
 		this.currentBall = null;
-		this.interval = null;
 		this.chimes = [
 			{ label: 'Chime 1', value: chime1 },
 			{ label: 'Chime 2', value: chime2 },
@@ -95,9 +93,6 @@ class BingoGame extends Component {
 		return {
 			board: generateBingoBoard(),
 			previousCallList: [],
-			displayBoardOnly: false,
-			delay: 6000,
-			running: false,
 			skipUnused: true,
 			wildBingo: false,
 			evensOdds: false,
@@ -143,7 +138,6 @@ class BingoGame extends Component {
 			totalBallsCalled: this.totalBallsCalled,
 			previousBall: this.previousBall,
 			currentBall: this.currentBall,
-			interval: this.interval,
 		};
 		localStorage.setItem('lpb-gameData', JSON.stringify(gameData));
 		localStorage.setItem('lpb-gameState', JSON.stringify(this.state));
@@ -183,14 +177,6 @@ class BingoGame extends Component {
 			this.startWildBingo();
 		} else {
 			this.callBingoNumber();
-		}
-	};
-
-	startNewAutoplayGame = () => {
-		if (this.state.wildBingo) {
-			this.startNewGame();
-		} else {
-			this.toggleGame();
 		}
 	};
 
@@ -247,25 +233,13 @@ class BingoGame extends Component {
 		this.setState({ board: board, previousCallList: [...previousCallList] });
 	};
 
-	toggleGame = () => {
-		let running = this.state.running;
-		if (running === true) {
-			clearInterval(this.interval);
-		} else {
-			this.callBingoNumber();
-			this.interval = setInterval(this.callBingoNumber, this.state.delay);
-		}
-		this.setState({ running: !running });
-	};
-
 	toggleResetModal = () => {
 		const currentState = this.state.showResetModal;
 		this.setState({ showResetModal: !currentState });
 	};
 
 	confirmResetGame = () => {
-		clearInterval(this.interval);
-		this.setState({ running: false, showResetModal: false });
+		this.setState({ showResetModal: false });
 
 		// Shuffle animation and sound before the board actually resets
 		let balls = generateBingoBoard();
@@ -397,23 +371,14 @@ class BingoGame extends Component {
 				this.callBingoNumber();
 			}
 		} else {
-			clearInterval(this.interval);
 			this.totalBallsCalled = totalPossibleBalls;
 			this.previousBall = this.currentBall;
 			this.currentBall = null;
-			this.setState({ running: false });
+			this.forceUpdate();
 		}
 	};
 
 	/* ------------------ Handlers */
-	handleDelayChange = (e) => {
-		if (this.state.running === true) {
-			clearInterval(this.interval);
-			this.interval = setInterval(this.callBingoNumber, e);
-		}
-		this.setState({ delay: e });
-	};
-
 	handleCheckbox = (e) => {
 		let gamemode = e.currentTarget.dataset.gamemode;
 		switch (gamemode) {
@@ -425,15 +390,6 @@ class BingoGame extends Component {
 				break;
 			case 'evens-odds':
 				this.setState({ evensOdds: e.currentTarget.checked });
-				break;
-			case 'display-board':
-				if (e.currentTarget.checked && this.state.running) {
-					clearInterval(this.interval);
-				}
-				this.setState({
-					displayBoardOnly: e.currentTarget.checked,
-					running: false,
-				});
 				break;
 			case 'enable-chime':
 				this.setState({ chime: e.currentTarget.checked });
@@ -632,42 +588,6 @@ class BingoGame extends Component {
 		this.setState({ selectedChime: e });
 	};
 
-	/* ------------------- Display Board Only Mode */
-	manualCall = (ball) => {
-		let board = this.state.board;
-		let currentBall = null;
-		let previousBall = this.currentBall;
-		let totalBallsCalled = this.totalBallsCalled;
-		let previousCallList = [...this.state.previousCallList];
-		Object.keys(board).forEach((letter) => {
-			board[letter].forEach((number) => {
-				number.active = false;
-				if (ball.number === number.number) {
-					if (number.called) {
-						number.called = false;
-						totalBallsCalled--;
-						previousCallList = previousCallList.map((previousBall) => {
-							return previousBall !== ball;
-						});
-						previousBall = previousCallList[previousCallList.length - 1];
-					} else {
-						previousCallList.push(number);
-						number.called = true;
-						number.active = true;
-						totalBallsCalled++;
-						currentBall = number;
-					}
-				}
-				return number;
-			});
-			return letter;
-		});
-		this.totalBallsCalled = totalBallsCalled;
-		this.previousBall = previousBall;
-		this.currentBall = currentBall;
-		this.setState({ board: board, previousCallList });
-	};
-
 	/* ------------------- Render */
 	render() {
 		return (
@@ -711,11 +631,7 @@ class BingoGame extends Component {
 							</div>
 						</div>
 						<div className="col board-side">
-							<BingoBoard
-								board={this.state.board}
-								manualMode={this.state.displayBoardOnly}
-								manualCall={this.manualCall}
-							/>
+							<BingoBoard board={this.state.board} />
 						</div>
 					</div>
 				</section>
@@ -744,32 +660,15 @@ class BingoGame extends Component {
 							<section className="gameplay-controls">
 								<div data-disabled={this.totalBallsCalled >= 75}>
 									<button
-										data-disabled={this.state.displayBoardOnly}
 										onClick={
 											this.totalBallsCalled === 0
 												? this.startNewGame
 												: this.callBingoNumber
 										}
-										disabled={this.state.running}
 									>
 										{this.totalBallsCalled === 0
 											? 'Start New Game'
 											: 'Call Next Number'}
-									</button>
-
-									<button
-										data-disabled={this.state.displayBoardOnly}
-										data-newgame={this.totalBallsCalled === 0}
-										className={
-											this.state.running ? 'pause-button' : 'play-button'
-										}
-										onClick={
-											this.totalBallsCalled === 0
-												? this.startNewAutoplayGame
-												: this.toggleGame
-										}
-									>
-										{this.state.running ? 'Pause Autoplay' : 'Start Autoplay'}
 									</button>
 								</div>
 
@@ -787,35 +686,7 @@ class BingoGame extends Component {
 										<h6>Gameplay Settings:</h6>
 									</div>
 									<div className="col grow min-size-150 padding-horizontal-lg">
-										<div className="row">
-											<div
-												className="col grow"
-												data-disabled={this.totalBallsCalled > 0}
-											>
-												<label
-													className={
-														this.state.displayBoardOnly
-															? 'toggle checked'
-															: 'toggle'
-													}
-												>
-													<span className="toggle-span"></span>
-													<span>Manual Calling Mode</span>
-													<input
-														type="checkbox"
-														data-gamemode="display-board"
-														onChange={this.handleCheckbox}
-														checked={this.state.displayBoardOnly}
-													></input>
-												</label>
-											</div>
-										</div>
-										<div
-											className="row justify-start"
-											data-visibility={
-												this.state.displayBoardOnly === false ? 'show' : 'hide'
-											}
-										>
+										<div className="row justify-start">
 											<div
 												className="col padding-right-xlg"
 												data-disabled={this.totalBallsCalled > 0}
@@ -876,109 +747,72 @@ class BingoGame extends Component {
 									</div>
 								</div>
 
-								{/* ----------- Settings when using generation ---------- */}
+								{/* ----------- Chime ----------- */}
+								<div className="row no-wrap align-start justify-start">
+									<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
+										<h6>Audible Chime:</h6>
+									</div>
+
+									<div className="col grow padding-horizontal-lg">
+										<label
+											className={
+												this.state.chime ? 'toggle checked' : 'toggle'
+											}
+										>
+											<span className="toggle-span"></span>
+											<span>Enable</span>
+											<input
+												type="checkbox"
+												data-gamemode="enable-chime"
+												onChange={this.handleCheckbox}
+												checked={this.state.chime}
+											></input>
+										</label>
+									</div>
+								</div>
+
+								{/* ----------- Chime Selection ----------- */}
 								<div
-									data-visibility={
-										this.state.displayBoardOnly === false ? 'show' : 'hide'
-									}
+									className="row no-wrap align-start justify-start"
+									data-visibility={this.state.chime ? 'show' : 'hide'}
 								>
-									{/* ----------- Autoplay Settings ---------- */}
-									<div className="row no-wrap align-center justify-start">
-										<div className="col shrink min-size-150 padding-horizontal-lg">
-											<h6>Autoplay Speed:</h6>
-										</div>
-										<div className="col shrink text-center padding-vertical-lg padding-horizontal-lg">
-											<div
-												className="row no-wrap align-center slider"
-												data-disabled={this.state.displayBoardOnly}
-											>
-												<div className="col shrink padding-right-lg white-text">
-													Slower
-												</div>
-												<div className="col">
-													<Slider
-														min={3500}
-														max={30000}
-														step={500}
-														value={this.state.delay}
-														onChange={this.handleDelayChange}
-														reverse={true}
-													/>
-												</div>
-												<div className="col shrink padding-left-lg white-text">
-													Faster
-												</div>
-											</div>
-										</div>
+									<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
+										<h6>Chime Selection:</h6>
 									</div>
 
-									{/* ----------- Chime ----------- */}
-									<div className="row no-wrap align-start justify-start">
-										<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-											<h6>Audible Chime:</h6>
-										</div>
+									<div className="col grow padding-horizontal-lg">
+										<Select
+											className="select-input"
+											placeholder="Choose Chime"
+											menuPlacement="auto"
+											value={this.state.selectedChime}
+											onChange={this.handleChooseChime}
+											options={this.chimes}
+										/>
+									</div>
+								</div>
 
-										<div className="col grow padding-horizontal-lg">
-											<label
-												className={
-													this.state.chime ? 'toggle checked' : 'toggle'
-												}
-											>
-												<span className="toggle-span"></span>
-												<span>Enable</span>
-												<input
-													type="checkbox"
-													data-gamemode="enable-chime"
-													onChange={this.handleCheckbox}
-													checked={this.state.chime}
-												></input>
-											</label>
-										</div>
+								{/* ----------- Audible Shuffle ----------- */}
+								<div className="row no-wrap align-start justify-start">
+									<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
+										<h6>Audible Shuffle:</h6>
 									</div>
 
-									{/* ----------- Chime Selection ----------- */}
-									<div
-										className="row no-wrap align-start justify-start"
-										data-visibility={this.state.chime ? 'show' : 'hide'}
-									>
-										<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-											<h6>Chime Selection:</h6>
-										</div>
-
-										<div className="col grow padding-horizontal-lg">
-											<Select
-												className="select-input"
-												placeholder="Choose Chime"
-												menuPlacement="auto"
-												value={this.state.selectedChime}
-												onChange={this.handleChooseChime}
-												options={this.chimes}
-											/>
-										</div>
-									</div>
-
-									{/* ----------- Audible Shuffle ----------- */}
-									<div className="row no-wrap align-start justify-start">
-										<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-											<h6>Audible Shuffle:</h6>
-										</div>
-
-										<div className="col grow padding-horizontal-lg">
-											<label
-												className={
-													this.state.audibleShuffle ? 'toggle checked' : 'toggle'
-												}
-											>
-												<span className="toggle-span"></span>
-												<span>Enable</span>
-												<input
-													type="checkbox"
-													data-gamemode="enable-shuffle-sound"
-													onChange={this.handleCheckbox}
-													checked={this.state.audibleShuffle}
-												></input>
-											</label>
-										</div>
+									<div className="col grow padding-horizontal-lg">
+										<label
+											className={
+												this.state.audibleShuffle ? 'toggle checked' : 'toggle'
+											}
+										>
+											<span className="toggle-span"></span>
+											<span>Enable</span>
+											<input
+												type="checkbox"
+												data-gamemode="enable-shuffle-sound"
+												onChange={this.handleCheckbox}
+												checked={this.state.audibleShuffle}
+											></input>
+										</label>
 									</div>
 								</div>
 							</section>
