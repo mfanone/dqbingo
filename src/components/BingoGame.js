@@ -617,6 +617,7 @@ class BingoGame extends Component {
 							<Pattern
 								pattern={this.state.selectedPattern}
 								update={this.handleUpdatePattern}
+								disabled={this.totalBallsCalled > 0}
 							/>
 							<div className="padding-vertical-lg">
 								<Select
@@ -627,6 +628,7 @@ class BingoGame extends Component {
 										this.setState({ selectedPattern: e });
 									}}
 									options={this.presets}
+									isDisabled={this.totalBallsCalled > 0}
 								/>
 							</div>
 						</div>
