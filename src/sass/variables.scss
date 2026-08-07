@@ -1,9 +1,17 @@
 :root {
-	--primary-color: #00487b;
-	--secondary-color: #1396d3;
+	/* FPC brand palette (Document & Report Branding Guidelines) */
+	--primary-color: #2c3290; /* Indigo */
+	--secondary-color: #2b55a5; /* Cobalt */
+	--accent-coral: #f46f4e; /* Coral - action/CTA, Heading 1 rule */
+	--accent-pink: #f25fba; /* Vivid Pink - celebratory highlight only */
+	--color-cream: #f6f7f9; /* Light background / row banding */
+	--color-ink: #252d31; /* Body text, never pure black */
+	--color-muted: #656a72; /* Captions, footnotes, footer text */
+	--color-border: #d7dde4; /* Hairline dividers, never plain black */
+
 	--condensed-font: "Roboto Condensed", sans-serif;
-	--heading-font: "Roboto Condensed", sans-serif;
-	--body-font: "Roboto", sans-serif;
+	--heading-font: "Caladea", "Cambria", Georgia, serif;
+	--body-font: "Carlito", "Calibri", Arial, sans-serif;
 	--digital-font: "Digital", "Roboto Condensed", "Helvetica", cursive;
 	--release-color: #5cb3ee;
 	--bugfix-color: #ff8b9f;

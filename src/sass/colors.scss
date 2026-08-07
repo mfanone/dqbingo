@@ -7,7 +7,7 @@
   background-color: #7b0000 !important;
 }
 .dark-blue-bg {
-  background-color: #00487b !important;
+  background-color: var(--primary-color) !important;
 }
 .white-bg {
   background-color: white !important;
@@ -34,7 +34,7 @@
   color: #888888 !important;
 }
 .blue-text {
-  color: #1396d3 !important;
+  color: var(--secondary-color) !important;
 }
 .yellow-text {
   color: #ffca28 !important;

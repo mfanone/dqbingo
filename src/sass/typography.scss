@@ -63,9 +63,12 @@
 	src: url("../fonts/RobotoCondensed-Bold.woff");
 }
 // Typography Styles ---------------
+// Serif (--heading-font) is reserved for h1 only, matching the FPC brand
+// guide's Title/Heading 1 treatment; everything else uses sans (--body-font).
 body,
 html {
-	font-family: var(--heading-font);
+	font-family: var(--body-font);
+	color: var(--color-ink);
 	font-size: 16px;
 }
 
@@ -83,21 +86,39 @@ ol p {
 
 h1 {
 	font-size: 2rem;
+	font-family: var(--heading-font);
+	font-weight: bold;
+	color: var(--primary-color);
+	padding-bottom: 0.3em;
+	border-bottom: 2px solid var(--accent-coral);
 }
 h2 {
 	font-size: 1.8rem;
+	font-family: var(--body-font);
+	font-weight: bold;
+	color: var(--secondary-color);
 }
 h3 {
 	font-size: 1.6rem;
+	font-family: var(--body-font);
+	font-weight: bold;
+	color: var(--color-ink);
 }
 h4 {
 	font-size: 1.4rem;
+	font-family: var(--body-font);
+	font-weight: bold;
+	font-variant: small-caps;
+	color: var(--secondary-color);
 }
 h5 {
 	font-size: 1.2rem;
+	font-family: var(--body-font);
+	color: var(--color-ink);
 }
 h6 {
 	font-size: 1rem;
 	margin: 0;
-	color: var(--secondary-color);
+	font-family: var(--body-font);
+	color: var(--color-muted);
 }
