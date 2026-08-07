@@ -13,7 +13,7 @@ import Patterns from './components/pages/Patterns.js';
 import Settings from './components/pages/Settings.js';
 
 const routing = (
-	<Router>
+	<Router basename={process.env.PUBLIC_URL}>
 		<header>
 			<div className="container row align-center">
 				<div className="col shrink">
