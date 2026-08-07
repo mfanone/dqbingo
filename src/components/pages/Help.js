@@ -173,11 +173,11 @@ class Help extends React.Component {
 							currently running or not.
 						</p>
 						<p>
-							<strong>Reset Board</strong> - this button is disabled if the game
-							is currently running, or if there is no game currently in play.
+							<strong>Reset Board</strong> - this button is always available.
 							Clicking this button will show a pop up asking you if you're sure
-							you want to reset the board. This will wipe out the current game
-							completely so use with caution.
+							you want to reset the board. Confirming will play a quick shuffle
+							animation and sound before wiping out the current game completely,
+							so use with caution.
 						</p>
 
 						<section className="padding-top-sm dark-blue-bg"></section>

@@ -263,19 +263,58 @@ class BingoGame extends Component {
 	};
 
 	confirmResetGame = () => {
+		clearInterval(this.interval);
+		this.setState({ running: false, showResetModal: false });
+
+		// Shuffle animation and sound before the board actually resets
+		let balls = generateBingoBoard();
+		let letters = ['B', 'I', 'N', 'G', 'O'];
+		let sound = new Audio(this.shuffleSound);
+		let duration = 1500;
+		for (let i = 0; i <= duration; i++) {
+			window.setTimeout(() => {
+				if (i === 0) {
+					sound.play();
+				}
+				if (i > 0 && i <= duration) {
+					flashRandomBall();
+					this.setState({ board: balls });
+				}
+				if (i === duration) {
+					sound.pause();
+					this.resetGame();
+				}
+			}, duration);
+		}
+
+		function flashRandomBall() {
+			let randomLetter = letters[Math.floor(Math.random() * 5)];
+			let randomNumber = Math.floor(Math.random() * 15);
+			Object.keys(balls).forEach((letter) => {
+				Object.values(balls[letter]).forEach((ball) => {
+					if (ball.letter === randomLetter) {
+						balls[randomLetter][randomNumber].active =
+							!balls[randomLetter][randomNumber].active;
+						balls[randomLetter][randomNumber].called =
+							!balls[randomLetter][randomNumber].called;
+					}
+					return ball;
+				});
+			});
+		}
+	};
+
+	resetGame = () => {
 		// Clear out local storage
 		localStorage.removeItem('lpb-gameData');
 		localStorage.removeItem('lpb-gameState');
 		// reset everything with the board
-		clearInterval(this.interval);
 		this.totalBallsCalled = 0;
 		this.previousBall = null;
 		this.currentBall = null;
 		this.setState({
 			board: generateBingoBoard(),
 			wildBall: null,
-			running: false,
-			showResetModal: false,
 			previousCallList: [],
 		});
 	};
@@ -360,44 +399,6 @@ class BingoGame extends Component {
 			this.previousBall = this.currentBall;
 			this.currentBall = null;
 			this.setState({ running: false });
-		}
-	};
-
-	shuffleBalls = () => {
-		let balls = generateBingoBoard();
-		let letters = ['B', 'I', 'N', 'G', 'O'];
-		let sound = new Audio(this.shuffleSound);
-		let duration = 1500;
-		for (let i = 0; i <= duration; i++) {
-			window.setTimeout(() => {
-				if (i === 0) {
-					sound.play();
-				}
-				if (i > 0 && i <= duration) {
-					flashRandomBall();
-					this.setState({ board: balls });
-				}
-				if (i === duration) {
-					sound.pause();
-					this.confirmResetGame();
-				}
-			}, duration);
-		}
-
-		function flashRandomBall() {
-			let randomLetter = letters[Math.floor(Math.random() * 5)];
-			let randomNumber = Math.floor(Math.random() * 15);
-			Object.keys(balls).forEach((letter) => {
-				Object.values(balls[letter]).forEach((ball) => {
-					if (ball.letter === randomLetter) {
-						balls[randomLetter][randomNumber].active =
-							!balls[randomLetter][randomNumber].active;
-						balls[randomLetter][randomNumber].called =
-							!balls[randomLetter][randomNumber].called;
-					}
-					return ball;
-				});
-			});
 		}
 	};
 
@@ -766,19 +767,7 @@ class BingoGame extends Component {
 									</button>
 								</div>
 
-								<button
-									onClick={this.toggleResetModal}
-									disabled={this.state.running || this.totalBallsCalled === 0}
-								>
-									Reset Board
-								</button>
-
-								<button
-									onClick={this.shuffleBalls}
-									disabled={this.state.running || this.totalBallsCalled > 0}
-								>
-									Shuffle Board
-								</button>
+								<button onClick={this.toggleResetModal}>Reset Board</button>
 							</section>
 							{this.resetConfirmationModalDisplay}
 						</div>
