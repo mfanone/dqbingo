@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './images/logo.svg';
+import callBall from './images/call-ball.png';
 import {
   chime1,
   chime2,
@@ -1063,10 +1063,10 @@ export const getPresetPatterns = () => {
  */
 export const getLogoBallDisplay = () => {
   return (
-    <div className="ball-display white relative">
+    <div className="ball-display graphic relative">
       <div className="content">
         <div className="ball-content">
-          <img src={logo} alt="Lets Play Bingo Logo"/>
+          <img src={callBall} alt="Drag Queen Bingo"/>
         </div>
       </div>
     </div>

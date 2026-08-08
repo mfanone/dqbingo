@@ -84,6 +84,28 @@
 			}
 		}
 
+		&.graphic {
+			box-shadow: none;
+			.content {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				padding: 0;
+				background: transparent;
+				box-shadow: none;
+				overflow: hidden;
+				img {
+					width: 100%;
+					height: 100%;
+					padding: 0;
+					object-fit: cover;
+					display: block;
+				}
+			}
+		}
+
 		&.green {
 			background: radial-gradient(circle at 20% 20%, #008000, #004a00);
 			.content {
