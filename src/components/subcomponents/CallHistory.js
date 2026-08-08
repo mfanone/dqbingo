@@ -5,6 +5,7 @@
  *  This class is used to display the full history of the called balls
  */
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class CallHistory extends React.Component {
 
@@ -23,9 +24,10 @@ class CallHistory extends React.Component {
    get fullHistoryDisplay() {
     const ballHistory = [...this.props.calledBalls].reverse();
     if(this.state.showFullCallHistory === true){
-      return (
+      return ReactDOM.createPortal(
         <div>
           <div className="modal">
+            <button className="modal-close" aria-label="Close" onClick={() => {this.setState({showFullCallHistory:false})}}>&times;</button>
             <h4 className="margin-md">Full Call History</h4>
             <div className="x-small-text margin-bottom-lg">Most recent call listed first, left to right, top to bottom.</div>
             <div className="previous-calls">
@@ -35,12 +37,10 @@ class CallHistory extends React.Component {
                 )
               })}
             </div>
-            <p>
-              <button onClick={() => {this.setState({showFullCallHistory:false})}}>Close</button>
-            </p>
           </div>
           <div className="modal-backdrop" onClick={(e) => {e.preventDefault();}}></div>
-        </div>
+        </div>,
+        document.body
       )
     } else {
       return null

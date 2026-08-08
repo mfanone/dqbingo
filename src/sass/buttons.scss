@@ -69,6 +69,7 @@ button {
 		}
 	}
 	&.altBtn {
+		border-radius: 0.5rem;
 		border-color: var(--primary-color);
 		color: var(--primary-color);
 		&:hover {
@@ -92,6 +93,25 @@ button {
 			background-color: var(--primary-color);
 			color: #ffffff;
 			border-color: var(--primary-color);
+		}
+	}
+}
+
+.reset-modal {
+	button.primaryBtn {
+		border: none;
+		border-radius: 0.5rem;
+		&:hover {
+			background-color: #1f2365;
+			color: #ffffff;
+		}
+	}
+	button.altBtn {
+		color: #ffffff;
+		&:hover {
+			background-color: transparent;
+			color: #ffffff;
+			border-color: #1f2365;
 		}
 	}
 }

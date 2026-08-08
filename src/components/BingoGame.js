@@ -490,14 +490,14 @@ class BingoGame extends Component {
 		if (this.state.showResetModal === true) {
 			return (
 				<div>
-					<div className="modal">
+					<div className="modal reset-modal">
 						<h4>Reset Game</h4>
 						<p>Are you sure you want to reset the game?</p>
 						<p className="red-text">
 							This action <strong>cannot</strong> be undone.
 						</p>
 						<p>
-							<button onClick={this.toggleResetModal}>Cancel</button>
+							<button className="altBtn" onClick={this.toggleResetModal}>Cancel</button>
 							<button className="primaryBtn" onClick={this.confirmResetGame}>
 								Confirm
 							</button>

@@ -156,71 +156,6 @@
 			}
 		}
 	}
-	/* Previous Calls Display */
-	.previous-calls {
-		display: flex;
-		flex-flow: row wrap;
-		justify-content: center;
-		text-align: center;
-		margin: 0 auto;
-		div {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			align-content: stretch;
-			flex: 0 0 68px;
-			margin: 0 1%;
-			border-radius: 100%;
-			height: 4rem;
-			padding: 6px;
-			box-sizing: content-box;
-
-			span {
-				color: white;
-				font-size: 2rem;
-			}
-
-			&.blue {
-				background-color: #0000ff;
-			}
-
-			&.red {
-				background-color: #ff0000;
-			}
-
-			&.white {
-				background-color: #ffffff;
-				span {
-					color: #222222;
-				}
-			}
-
-			&.green {
-				background-color: #008000;
-			}
-
-			&.yellow {
-				background-color: #f7bd00;
-				span {
-					color: #222222;
-				}
-			}
-		}
-	}
-	.modal .previous-calls {
-		max-width: 300px;
-		div {
-			flex: 0 0 32px;
-			height: 2rem;
-			padding: 3px;
-			margin: 5px;
-
-			span {
-				font-size: 1rem;
-			}
-		}
-	}
-
 	/* Gameplay Controls */
 	.gameplay-controls {
 		margin-top: -41px;
@@ -274,6 +209,72 @@
 			.row {
 				flex-direction: column;
 			}
+		}
+	}
+}
+
+/* Previous Calls Display (also rendered via portal in the full-history modal,
+   so this must not be scoped under .game-controls) */
+.previous-calls {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	text-align: center;
+	margin: 0 auto;
+	div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-content: stretch;
+		flex: 0 0 68px;
+		margin: 0 1%;
+		border-radius: 100%;
+		height: 4rem;
+		padding: 6px;
+		box-sizing: content-box;
+
+		span {
+			color: white;
+			font-size: 2rem;
+		}
+
+		&.blue {
+			background-color: #0000ff;
+		}
+
+		&.red {
+			background-color: #ff0000;
+		}
+
+		&.white {
+			background-color: #ffffff;
+			span {
+				color: #222222;
+			}
+		}
+
+		&.green {
+			background-color: #008000;
+		}
+
+		&.yellow {
+			background-color: #f7bd00;
+			span {
+				color: #222222;
+			}
+		}
+	}
+}
+.modal .previous-calls {
+	max-width: 300px;
+	div {
+		flex: 0 0 32px;
+		height: 2rem;
+		padding: 3px;
+		margin: 5px;
+
+		span {
+			font-size: 1rem;
 		}
 	}
 }
