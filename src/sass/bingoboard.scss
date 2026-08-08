@@ -145,7 +145,8 @@
 		.pattern-select {
 			width: 100%;
 			display: block;
-			border: 1px solid #fff;
+			border: 3px solid var(--primary-color);
+			border-radius: 0.5rem;
 
 			div[class$="-singleValue"] {
 				color: #888888;
@@ -157,10 +158,13 @@
 				background: #222;
 				border: none;
 				color: #efefef;
-				border-radius: 0;
+				border-radius: 0.5rem;
 			}
 			div[class$="-menu"] * {
 				color: #222222;
+			}
+			span[class$="-indicatorSeparator"] {
+				background-color: var(--primary-color);
 			}
 		}
 	}

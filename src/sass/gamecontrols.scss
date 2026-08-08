@@ -230,6 +230,14 @@
 			margin: 0.5rem auto;
 			font-size: 1.32rem;
 			padding: 0.726rem 1.32rem;
+			border-radius: 0.5rem;
+			border: none;
+			background-color: var(--primary-color);
+
+			&:hover {
+				background-color: #1f2365;
+				color: #ffffff;
+			}
 		}
 	}
 

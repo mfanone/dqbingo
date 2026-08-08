@@ -587,11 +587,11 @@ class BingoGame extends Component {
 												: this.callBingoNumber
 										}
 									>
-										Call Next Number
+										NEXT NUMBER
 									</button>
 								</div>
 
-								<button onClick={this.toggleResetModal}>Reset Board</button>
+								<button onClick={this.toggleResetModal}>RESET BOARD</button>
 							</section>
 							{this.resetConfirmationModalDisplay}
 						</div>
