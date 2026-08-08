@@ -10,7 +10,7 @@
 			display: inline-block;
 			.logo {
 				display: block;
-				height: 64px;
+				height: 80px;
 			}
 		}
 		/* Called Numbers */
@@ -32,10 +32,10 @@
 		}
 		.callNumber-text {
 			font-family: var(--condensed-font);
-			font-size: 0.8rem;
+			font-size: 0.96rem;
 
 			@media screen and (max-width: 700px) {
-				font-size: 1rem;
+				font-size: 1.2rem;
 			}
 		}
 		/* Pattern */
@@ -43,7 +43,7 @@
 			display: flex;
 			margin: 0 auto;
 			align-items: flex-start;
-			width: 160px;
+			width: 200px;
 			&[data-disabled="true"] {
 				opacity: 1;
 			}
@@ -56,18 +56,18 @@
 				}
 				&:nth-child(2) .col:first-child {
 					span {
-						margin-top: -0.5rem;
+						margin-top: -0.625rem;
 						transform: rotate(-7deg);
 					}
 				}
 				&:nth-child(3) .col:first-child {
 					span {
-						margin-top: -0.75rem;
+						margin-top: -0.9375rem;
 					}
 				}
 				&:nth-child(4) .col:first-child {
 					span {
-						margin-top: -0.5rem;
+						margin-top: -0.625rem;
 						transform: rotate(7deg);
 					}
 				}
@@ -78,21 +78,21 @@
 				}
 			}
 			.col {
-				padding: 4px;
-				height: 32px;
-				width: 32px;
+				padding: 5px;
+				height: 40px;
+				width: 40px;
 				position: relative;
 				// Letters along the top
 				&:first-child {
 					line-height: 1.5;
-					height: 3rem;
+					height: 3.75rem;
 					span {
-						font-size: 1.5rem;
+						font-size: 1.875rem;
 						font-family: var(--body-font);
 						font-weight: 800;
 
 						@media screen and (max-width: 700px) {
-							font-size: 1.5rem;
+							font-size: 1.875rem;
 						}
 					}
 				}
@@ -111,14 +111,14 @@
 					margin: 0 auto;
 
 					&.free-space {
-						font-size: 0.5rem;
+						font-size: 0.625rem;
 						line-height: 1.5;
-						margin: 2px;
+						margin: 2.5px;
 						text-align: center;
 						text-transform: uppercase;
 						color: #676767;
 						@media screen and (max-width: 700px) {
-							font-size: 10px;
+							font-size: 12.5px;
 							margin: 0.25em;
 						}
 					}
@@ -126,9 +126,9 @@
 				&.selected {
 					span {
 						background-color: var(--secondary-color);
-						margin: 3px;
+						margin: 3.75px;
 						@media screen and (max-width: 1024px) {
-							margin: 3px;
+							margin: 3.75px;
 						}
 						&.free-space {
 							overflow: hidden;
@@ -166,6 +166,9 @@
 	}
 	.board-side {
 		#board {
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
 			padding: 1rem;
 			display: flex;
 			flex-flow: column;
@@ -173,19 +176,30 @@
 			justify-content: space-between;
 
 			* {
-				font-size: 2.7rem;
+				font-size: 3.564rem;
 				line-height: 1.5;
 
 				@media screen and (max-width: 700px) {
-					font-size: 20px;
+					font-size: 26.4px;
 				}
 			}
 			.board-letter {
 				flex: 0 0 1.25em !important;
 				font-weight: bold;
 				color: var(--secondary-color);
+				font-size: 4.2768rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				@media screen and (max-width: 700px) {
+					font-size: 31.68px;
+				}
 			}
 			.ball {
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				color: #3c3c3c;
 
 				button {

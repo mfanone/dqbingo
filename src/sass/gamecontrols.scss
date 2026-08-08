@@ -159,10 +159,12 @@
 	/* Gameplay Controls */
 	.gameplay-controls {
 		button {
-			min-width: 175px;
+			min-width: 231px;
 			width: 80%;
 			display: block;
 			margin: 0.5rem auto;
+			font-size: 1.32rem;
+			padding: 0.726rem 1.32rem;
 		}
 	}
 

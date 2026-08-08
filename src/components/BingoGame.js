@@ -538,13 +538,13 @@ class BingoGame extends Component {
 									<div className="callNumber">
 										{this.numberDisplay}
 									</div>
-									<div className="callNumber-text uppercase">Total Calls</div>
+									<div className="callNumber-text uppercase">Calls</div>
 								</div>
 								<div className="col text-center margin-sm">
 									<div className="callNumber">
 										{this.previousCallDisplay}
 									</div>
-									<div className="callNumber-text uppercase">Previous Call</div>
+									<div className="callNumber-text uppercase">Previous</div>
 								</div>
 							</div>
 
@@ -575,23 +575,7 @@ class BingoGame extends Component {
 
 				{/* ----------- BOTTOM SECTION ------------- */}
 				<section className="game-controls dark-bg">
-					<div className="container row justify-start align-start">
-						{/* ----------- Current Ball Display ------------- */}
-						<div className="col min-size-250 padding-vertical-xxlg padding-horizontal-md">
-							{this.currentBallDisplay}
-
-							<CallHistory
-								calledBalls={this.state.previousCallList}
-							></CallHistory>
-
-							<div
-								data-visibility={this.state.wildBingo ? 'show' : 'hide'}
-								className="white-text text-center margin-top-lg"
-							>
-								<strong>Wild Ball: </strong> {this.state.wildBall}
-							</div>
-						</div>
-
+					<div className="container row align-start">
 						{/* ----------- Gameplay Controls ------------- */}
 						<div className="col shrink padding-vertical-xxlg padding-horizontal-md">
 							<section className="gameplay-controls">
@@ -612,6 +596,25 @@ class BingoGame extends Component {
 								<button onClick={this.toggleResetModal}>Reset Board</button>
 							</section>
 							{this.resetConfirmationModalDisplay}
+						</div>
+
+						{/* ----------- Current Ball Display ------------- */}
+						<div className="col grow min-size-250 padding-vertical-xxlg padding-horizontal-md">
+							<div className="row no-wrap align-start">
+								<div className="col shrink">{this.currentBallDisplay}</div>
+								<div className="col grow">
+									<CallHistory
+										calledBalls={this.state.previousCallList}
+									></CallHistory>
+								</div>
+							</div>
+
+							<div
+								data-visibility={this.state.wildBingo ? 'show' : 'hide'}
+								className="white-text text-center margin-top-lg"
+							>
+								<strong>Wild Ball: </strong> {this.state.wildBall}
+							</div>
 						</div>
 					</div>
 				</section>
