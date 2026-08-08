@@ -587,9 +587,7 @@ class BingoGame extends Component {
 												: this.callBingoNumber
 										}
 									>
-										{this.totalBallsCalled === 0
-											? 'Start New Game'
-											: 'Call Next Number'}
+										Call Next Number
 									</button>
 								</div>
 
