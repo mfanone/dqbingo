@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, useLocation } from 'react-router-dom';
 // Styles
 import './sass/main.scss';
 // Custom Components
@@ -12,6 +12,55 @@ import FloatingPanel from './components/subcomponents/FloatingPanel.js';
 import FullscreenIcon from './components/subcomponents/icons/FullscreenIcon.js';
 import GearIcon from './components/subcomponents/icons/GearIcon.js';
 import HelpIcon from './components/subcomponents/icons/HelpIcon.js';
+import HomeIcon from './components/subcomponents/icons/HomeIcon.js';
+
+function HeaderBar({ isFullscreen, toggleFullscreen, setSettingsOpen, setHelpOpen }) {
+	const location = useLocation();
+	const isPatternsPage = location.pathname === '/patterns';
+
+	return (
+		<header>
+			<div className="container row align-center">
+				<div className="col shrink">
+					{isPatternsPage && (
+						<Link className="icon-btn" to="/" aria-label="Back to Home">
+							<HomeIcon />
+						</Link>
+					)}
+				</div>
+				<div className="row no-wrap justify-end">
+					<div className="col shrink">
+						<button
+							className="icon-btn"
+							onClick={toggleFullscreen}
+							aria-label={isFullscreen ? 'Exit Full Screen' : 'Full Screen'}
+						>
+							<FullscreenIcon active={isFullscreen} />
+						</button>
+					</div>
+					<div className="col shrink">
+						<button
+							className="icon-btn"
+							onClick={() => setSettingsOpen(true)}
+							aria-label="Settings"
+						>
+							<GearIcon />
+						</button>
+					</div>
+					<div className="col shrink">
+						<button
+							className="icon-btn"
+							onClick={() => setHelpOpen(true)}
+							aria-label="Help"
+						>
+							<HelpIcon />
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+	);
+}
 
 function App() {
 	const [settingsOpen, setSettingsOpen] = useState(false);
@@ -63,37 +112,12 @@ function App() {
 
 	return (
 		<Router basename={process.env.PUBLIC_URL}>
-			<header>
-				<div className="container row align-center justify-end">
-					<div className="col shrink">
-						<button
-							className="icon-btn"
-							onClick={toggleFullscreen}
-							aria-label={isFullscreen ? 'Exit Full Screen' : 'Full Screen'}
-						>
-							<FullscreenIcon active={isFullscreen} />
-						</button>
-					</div>
-					<div className="col shrink">
-						<button
-							className="icon-btn"
-							onClick={() => setSettingsOpen(true)}
-							aria-label="Settings"
-						>
-							<GearIcon />
-						</button>
-					</div>
-					<div className="col shrink">
-						<button
-							className="icon-btn"
-							onClick={() => setHelpOpen(true)}
-							aria-label="Help"
-						>
-							<HelpIcon />
-						</button>
-					</div>
-				</div>
-			</header>
+			<HeaderBar
+				isFullscreen={isFullscreen}
+				toggleFullscreen={toggleFullscreen}
+				setSettingsOpen={setSettingsOpen}
+				setHelpOpen={setHelpOpen}
+			/>
 
 			<Route exact path="/" component={BingoGame} />
 			<Route path="/patterns" component={Patterns} />
@@ -105,7 +129,7 @@ function App() {
 			)}
 			{helpOpen && (
 				<FloatingPanel title="Help" onClose={closeHelp}>
-					<Help onOpenSettings={openSettingsFromHelp} />
+					<Help onOpenSettings={openSettingsFromHelp} onClose={closeHelp} />
 				</FloatingPanel>
 			)}
 		</Router>

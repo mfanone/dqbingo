@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Help extends React.Component {
 	componentDidMount() {
@@ -21,14 +22,11 @@ class Help extends React.Component {
 						<div className="back-to-top">
 							<a href="#top">&#10094;</a>
 						</div>
-						<h1 className="no-margin">Instructions for Let's Play Bingo</h1>
+						<div className="title no-margin">Instructions for Drag Queen Bingo</div>
 
 						{/* --------------- Table of Contents --------------- */}
 						<p>Please use the links below to guide you in your gameplay!</p>
 						<ol>
-							<li>
-								<a href="#what-is-lpb">What is Let's Play Bingo?</a>
-							</li>
 							<li>
 								<a href="#gameplay">How do I play?</a>
 								<ul className="no-margin padding-left-xlg">
@@ -60,29 +58,8 @@ class Help extends React.Component {
 							</li>
 						</ol>
 
-						{/* --------------- How do I use LPB? --------------- */}
-						<h2 id="what-is-lpb">What is Let's Play Bingo?</h2>
-						<p>
-							Let's Play Bingo is a tool intended to be used for playing Bingo
-							in a group setting - this can be either in person or online
-							through virtual meetings with screen sharing.
-						</p>
-						<p className="small-text">
-							<strong>Note:</strong> This app does not make use of a database,
-							so games are not stored and you cannot access the same game across
-							multiple computers or with other people. So in order to play with
-							others, you have to have one designated person running the game
-							for all players and sharing their screen so that the players can
-							see the game board.{' '}
-							<em>
-								This app is <strong>not</strong> intended for gambling purposes
-								and any perceived losses are solely the responsibility of the
-								party/parties using this application for those purposes.
-							</em>
-						</p>
-
 						{/* --------------- Game Play --------------- */}
-						<h3 id="gameplay">How do I play?</h3>
+						<h1 id="gameplay">How do I play?</h1>
 						<p>
 							If you have ever played Bingo before, this application should be
 							pretty self explanatory. I've done my best to mimic what you
@@ -91,9 +68,9 @@ class Help extends React.Component {
 							app for hosting your own bingo games!
 						</p>
 
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
+						{/* <section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section> */}
 
-						<h4 id="game-setup">Game Setup</h4>
+						<h2 id="game-setup">Game Setup</h2>
 						<p>
 							First choose someone to be the caller/controller of the game
 							board. This person will manage game settings, handle calling the
@@ -125,9 +102,9 @@ class Help extends React.Component {
 							screen in that particular app.
 						</p>
 
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
+						{/* <section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section> */}
 
-						<h4 id="pattern-selection">Game Pattern Selection</h4>
+						<h2 id="pattern-selection">Game Pattern Selection</h2>
 						<p>
 							On the left side of the caller is a bingo card display that can be
 							used to show players what pattern they should be trying to match
@@ -146,13 +123,13 @@ class Help extends React.Component {
 						</p>
 						<p>
 							<strong>Pattern Listing</strong> you can{' '}
-							<a href="/patterns">view all of the patterns</a>, and print them
-							at <a href="/patterns">/patterns</a>!
+							<Link to="/patterns" onClick={this.props.onClose}>view all of the patterns</Link>, and print them
+							at <Link to="/patterns" onClick={this.props.onClose}>/patterns</Link>!
 						</p>
 
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
+						{/* <section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section> */}
 
-						<h4 id="gameplay-buttons">Gameplay Buttons</h4>
+						<h2 id="gameplay-buttons">Gameplay Buttons</h2>
 						<p>
 							<strong>Start New Game</strong> - this button only appears when
 							there is not an active game in play. Clicking this button will
@@ -174,7 +151,7 @@ class Help extends React.Component {
 
 
 						{/* --------------- Audible Chime --------------- */}
-						<h2 id="audible-chime">Audible Chime</h2>
+						<h1 id="audible-chime">Audible Chime</h1>
 						<p>
 							With this setting a subtle chime is played before each number is
 							called to alert the players that it's time to mark the next
@@ -192,8 +169,8 @@ class Help extends React.Component {
 
 
 						{/* --------------- GAME MODES --------------- */}
-						<h2 id="game-modes">Game Modes</h2>
-						<h3>Skip Unused Numbers</h3>
+						<h1 id="game-modes">Game Modes</h1>
+						<h2>Skip Unused Numbers</h2>
 						<p>
 							This game mode when used in combination with selecting a pattern
 							will skip any numbers beginning with a letter who's column is not
@@ -208,9 +185,9 @@ class Help extends React.Component {
 							to be played in any direction.
 						</p>
 
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
+						{/* <section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section> */}
 
-						<h3>Wild Bingo</h3>
+						<h2>Wild Bingo</h2>
 						<p>
 							Wild Bingo indicates that the first number called is wild, meaning
 							you would mark every number ending in the same digit as the wild
@@ -219,7 +196,7 @@ class Help extends React.Component {
 							any pattern.
 						</p>
 
-						<h4>Wild Bingo: Evens/Odds</h4>
+						<h3>Wild Bingo: Evens/Odds</h3>
 						<p>
 							This mode is a sub-type for Wild Bingo. Just like wild bingo - the
 							first number called is wild. However, in this game mode, you'd
@@ -228,13 +205,13 @@ class Help extends React.Component {
 						</p>
 
 
-						<h2 id="troubleshooting">Troubleshooting</h2>
+						<h1 id="troubleshooting">Troubleshooting</h1>
 						<p>
 							Having issues? Before sending a message please go through these
 							steps that will normally resolve any issues.
 						</p>
 
-						<h4 className="no-margin">Clear your cache.</h4>
+						<h3 className="no-margin">Clear your cache.</h3>
 						<p className="margin-top-none">
 							This simple step can usually solve most issues. If you are unsure
 							of how to clear your cache here is a{' '}
@@ -248,7 +225,7 @@ class Help extends React.Component {
 							that should help you.
 						</p>
 
-						<h4 className="no-margin">Check your game settings</h4>
+						<h3 className="no-margin">Check your game settings</h3>
 						<p className="margin-top-none">
 							Double check your settings to ensure that you're not inadvertently
 							disabling functionality. <em>For example</em>, if you have skip
@@ -256,7 +233,7 @@ class Help extends React.Component {
 							number it'll call all numbers.
 						</p>
 
-						<h4 className="no-margin">Try a different browser</h4>
+						<h3 className="no-margin">Try a different browser</h3>
 						<p className="margin-top-none">
 							To rule out issues with the site itself, try a different browser
 							and see if the issues persist.

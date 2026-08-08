@@ -11,8 +11,8 @@ class Patterns extends React.Component {
       <section id="pattern-list">
         <div className="container row">
           <div className="col padding-xxlg">
-            <h1>Patterns 
-                <button className="primaryBtn" onClick={() => {window.print();return false;}}>Print</button>
+            <h1>Patterns
+                <button className="primaryBtn print-btn" onClick={() => {window.print();return false;}}>PRINT</button>
             </h1>
             <div className="container">
               <div className="row patterns">

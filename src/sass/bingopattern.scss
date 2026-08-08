@@ -7,6 +7,9 @@
   button {
     float: right;
   }
+  .print-btn {
+    border-radius: 0.5rem;
+  }
   .pattern-block {
     flex-basis: calc(19% - 10px) !important;
     margin: 10px !important;
