@@ -598,20 +598,18 @@ class BingoGame extends Component {
 
 						{/* ----------- Current Ball Display ------------- */}
 						<div className="col grow min-size-250 padding-vertical-xxlg padding-horizontal-md">
-							<div className="row no-wrap align-start">
-								<div className="col shrink">{this.currentBallDisplay}</div>
-								<div className="col grow">
+							<div className="row no-wrap ball-history-row">
+								<div className="col shrink current-ball-wrap">
+									{this.currentBallDisplay}
+									<div className="text-center current-call-label uppercase x-small-text">
+										Current Call
+									</div>
+								</div>
+								<div className="col grow call-history-wrap">
 									<CallHistory
 										calledBalls={this.state.previousCallList}
 									></CallHistory>
 								</div>
-							</div>
-
-							<div
-								data-visibility={this.state.wildBingo ? 'show' : 'hide'}
-								className="white-text text-center margin-top-lg"
-							>
-								<strong>Wild Ball: </strong> {this.state.wildBall}
 							</div>
 						</div>
 					</div>

@@ -1,6 +1,42 @@
 /* Game Controls */
 .game-controls {
 	/* Ball Display */
+	.current-ball-wrap {
+		text-align: center;
+		background-color: #000000;
+		padding: 1.5rem;
+		padding-left: 1.5rem !important;
+		transform: translate(7.5px, -35%);
+	}
+	.ball-history-row {
+		gap: 1.5rem;
+	}
+	.call-history-wrap {
+		background-color: #000000;
+		padding: 1.5rem;
+		padding-right: 1.5rem !important;
+		margin-right: 1.5rem !important;
+		transform: translateY(-35%);
+	}
+	.previous-calls-label {
+		color: #ffffff;
+		font-weight: bold;
+		font-size: 0.96rem;
+		margin-right: 1rem;
+	}
+	.current-call-label {
+		color: #ffffff;
+		font-weight: bold;
+		font-size: 0.96rem;
+		margin-top: 0.5rem;
+	}
+	.show-full-history-link {
+		color: var(--primary-color);
+		font-size: 0.8rem !important;
+		&:hover {
+			color: var(--accent-coral);
+		}
+	}
 	.ball-display {
 		width: 100%;
 		min-width: 160px;

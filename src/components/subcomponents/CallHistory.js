@@ -60,7 +60,6 @@ class CallHistory extends React.Component {
       if(last5Calls.length > 0){
         return (
           <div className="margin-vertical-xlg">
-            <h6 className="text-center">Last 5 Calls</h6>
             <div className="previous-calls padding-vertical-xlg">
               {last5Calls.map(call => {
                 return (
@@ -68,7 +67,10 @@ class CallHistory extends React.Component {
                 )
               })}
             </div>
-            <button className="textOnly x-small-text" onClick={() => {this.setState({showFullCallHistory:true})}}>show full history</button>
+            <div className="text-center">
+              <span className="uppercase x-small-text previous-calls-label">Previous 5 Calls</span>
+              <button className="textOnly x-small-text uppercase show-full-history-link" onClick={() => {this.setState({showFullCallHistory:true})}}>show full history</button>
+            </div>
             {this.fullHistoryDisplay}
           </div>
         );
