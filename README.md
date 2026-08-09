@@ -1,10 +1,6 @@
-# Let's Play Bingo - 2020 Edition
+# Drag Queen Bingo
 
-This is the 2020 edition of Let's Play Bingo. It was retired on 6/1/2023 in favor for a complete re-write that is maintained on a private repository.
-
-#### Current URL
-
-http://2020.letsplaybingo.io
+This is a fork of the 2020 edition of Let's Play Bingo. Many features were stripped, and some re-thememing was done.
 
 ## Technology
 
