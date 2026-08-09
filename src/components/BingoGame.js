@@ -568,7 +568,10 @@ class BingoGame extends Component {
 							</div>
 						</div>
 						<div className="col board-side">
-							<BingoBoard board={this.state.board} />
+							<BingoBoard
+								board={this.state.board}
+								unusedLetters={this.state.selectedPattern.unusedLetters}
+							/>
 						</div>
 					</div>
 				</section>

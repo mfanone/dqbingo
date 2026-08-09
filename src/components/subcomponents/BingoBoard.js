@@ -24,10 +24,13 @@ class BingoBoard extends Component {
               <div className="col board-letter white-bg">{letter}</div>
               {
                 this.state.board[letter].map((number) => {
+                  const isUnused = this.props.unusedLetters &&
+                    this.props.unusedLetters.includes(letter);
+                  const className = isUnused ? "col ball" :
+                    number.active ? "col ball active" :
+                    number.called ? "col ball called" : "col ball";
                   return(
-                    <div key={number.display}
-                        className={number.active ?  "col ball active" : 
-                        number.called ?  "col ball called" : "col ball"}>
+                    <div key={number.display} className={className}>
                           {number.number}
                     </div>
                   )
