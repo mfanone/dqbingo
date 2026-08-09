@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Select from 'react-select';
 import { getChimeOptions, loadSettings, saveSettings } from '../../utils.js';
 
@@ -49,24 +48,33 @@ class Settings extends React.Component {
 
 	render() {
 		return (
-			<section className="padding-vertical-xxlg">
+			<section className="padding-vertical-xxlg settings-page">
 				<div className="container row">
 					<div className="col">
-						<h1 className="no-margin">Settings</h1>
-						<p>
-							These settings take effect the next time you start a game on
-							the{' '}
-							<Link to="/" onClick={this.props.onClose}>
-								Play
-							</Link>{' '}
-							page.
-						</p>
+						<section className="padding-top-sm dark-blue-bg"></section>
 
-						{/* ----------- Gameplay Settings ---------- */}
+						{/* ----------- Skip Unused Numbers ---------- */}
 						<div className="row align-top justify-start">
-							<div className="col shrink min-size-150 padding-horizontal-lg padding-vertical-md">
-								<h6>Gameplay Settings:</h6>
+							<div className="col padding-right-xlg padding-horizontal-lg">
+								<label
+									className={
+										this.state.skipUnused ? 'toggle checked' : 'toggle'
+									}
+								>
+									<span className="toggle-span"></span>
+									<span>SKIP UNUSED NUMBERS</span>
+									<input
+										type="checkbox"
+										data-gamemode="skip-unused"
+										onChange={this.handleCheckbox}
+										checked={this.state.skipUnused}
+									></input>
+								</label>
 							</div>
+						</div>
+
+						{/* ----------- Wild Bingo / Evens Odds ---------- */}
+						<div className="row align-top justify-start">
 							<div className="col grow min-size-150 padding-horizontal-lg">
 								<div className="row justify-start">
 									<div
@@ -79,7 +87,7 @@ class Settings extends React.Component {
 											}
 										>
 											<span className="toggle-span"></span>
-											<span>Wild Bingo</span>
+											<span>WILD BINGO</span>
 											<input
 												type="checkbox"
 												data-gamemode="wild-bingo"
@@ -100,7 +108,7 @@ class Settings extends React.Component {
 											}
 										>
 											<span className="toggle-span"></span>
-											<span>Evens/Odds</span>
+											<span>EVENS/ODDS</span>
 											<input
 												type="checkbox"
 												data-gamemode="evens-odds"
@@ -109,40 +117,18 @@ class Settings extends React.Component {
 											></input>
 										</label>
 									</div>
-									<div className="col padding-right-xlg">
-										<label
-											className={
-												this.state.skipUnused ? 'toggle checked' : 'toggle'
-											}
-										>
-											<span className="toggle-span"></span>
-											<span>Skip Unused Numbers</span>
-											<input
-												type="checkbox"
-												data-gamemode="skip-unused"
-												onChange={this.handleCheckbox}
-												checked={this.state.skipUnused}
-											></input>
-										</label>
-									</div>
 								</div>
 							</div>
 						</div>
 
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
-
 						{/* ----------- Chime ----------- */}
-						<div className="row no-wrap align-start justify-start">
-							<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-								<h6>Audible Chime:</h6>
-							</div>
-
-							<div className="col grow padding-horizontal-lg">
+						<div className="row no-wrap align-center justify-start">
+							<div className="col shrink padding-horizontal-lg">
 								<label
 									className={this.state.chime ? 'toggle checked' : 'toggle'}
 								>
 									<span className="toggle-span"></span>
-									<span>Enable</span>
+									<span>AUDIBLE CHIME</span>
 									<input
 										type="checkbox"
 										data-gamemode="enable-chime"
@@ -151,18 +137,11 @@ class Settings extends React.Component {
 									></input>
 								</label>
 							</div>
-						</div>
 
-						{/* ----------- Chime Selection ----------- */}
-						<div
-							className="row no-wrap align-start justify-start"
-							data-visibility={this.state.chime ? 'show' : 'hide'}
-						>
-							<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-								<h6>Chime Selection:</h6>
-							</div>
-
-							<div className="col grow padding-horizontal-lg">
+							<div
+								className="col grow padding-horizontal-lg"
+								data-disabled={!this.state.chime}
+							>
 								<Select
 									className="select-input"
 									placeholder="Choose Chime"
@@ -170,18 +149,13 @@ class Settings extends React.Component {
 									value={this.state.selectedChime}
 									onChange={this.handleChooseChime}
 									options={this.chimes}
+									isDisabled={!this.state.chime}
 								/>
 							</div>
 						</div>
 
-						<section className="margin-top-xxlg padding-top-sm pale-gray-bg"></section>
-
 						{/* ----------- Audible Shuffle ----------- */}
 						<div className="row no-wrap align-start justify-start">
-							<div className="col shrink min-size-150 padding-vertical-md padding-horizontal-lg">
-								<h6>Audible Shuffle:</h6>
-							</div>
-
 							<div className="col grow padding-horizontal-lg">
 								<label
 									className={
@@ -189,7 +163,7 @@ class Settings extends React.Component {
 									}
 								>
 									<span className="toggle-span"></span>
-									<span>Enable</span>
+									<span>AUDIBLE SHUFFLE</span>
 									<input
 										type="checkbox"
 										data-gamemode="enable-shuffle-sound"
@@ -199,6 +173,8 @@ class Settings extends React.Component {
 								</label>
 							</div>
 						</div>
+
+						<div className="chime-menu-spacer"></div>
 					</div>
 				</div>
 			</section>

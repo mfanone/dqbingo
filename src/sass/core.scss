@@ -80,14 +80,30 @@ header .col:nth-child(2) {
 	flex-direction: column;
 	width: 100%;
 	max-width: 800px;
-	max-height: 85vh;
 	background: #ffffff;
 	color: var(--color-ink);
 	border-radius: 8px;
 	box-shadow: 0 0 20px rgb(0 0 0 / 40%);
 }
 .floating-panel-body {
-	overflow-y: auto;
+	/* No overflow clipping here - a clipped ancestor cuts off dropdown
+	   menus (eg react-select) that open past this box. The backdrop's
+	   own overflow-y:auto scrolls the whole panel when it's taller than
+	   the viewport instead. */
+}
+.settings-page {
+	.container > .col > .row {
+		margin-bottom: 1.5rem;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.chime-menu-spacer {
+		/* Reserves room matching react-select's default menu height so
+		   the panel's own box (rounded corners, shadow) grows to sit
+		   behind the open dropdown instead of ending above it. */
+		height: 300px;
+	}
 }
 .floating-panel-close {
 	position: absolute;

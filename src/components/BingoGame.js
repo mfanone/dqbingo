@@ -497,9 +497,9 @@ class BingoGame extends Component {
 							This action <strong>cannot</strong> be undone.
 						</p>
 						<p>
-							<button className="altBtn" onClick={this.toggleResetModal}>Cancel</button>
+							<button className="altBtn" onClick={this.toggleResetModal}>CANCEL</button>
 							<button className="primaryBtn" onClick={this.confirmResetGame}>
-								Confirm
+								CONFIRM
 							</button>
 						</p>
 					</div>
