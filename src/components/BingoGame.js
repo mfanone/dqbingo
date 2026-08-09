@@ -1,10 +1,3 @@
-/*
- * Let's Play Bingo
- * Version 3.0
- * App written by Karol Brennan
- * https://karol.dev
- * http://github.com/karolbrennan
- */
 // Dependencies
 import React, { Component } from 'react';
 import Select from 'react-select';
@@ -51,6 +44,19 @@ class BingoGame extends Component {
 			for (let key in gameData) {
 				this[key] = gameData[key];
 			}
+			// Migrate state persisted before selectedPattern.pattern became an array
+			if (
+				gameState.selectedPattern &&
+				!Array.isArray(gameState.selectedPattern.pattern)
+			) {
+				gameState = {
+					...gameState,
+					selectedPattern: {
+						...gameState.selectedPattern,
+						pattern: [gameState.selectedPattern.pattern],
+					},
+				};
+			}
 			this.state = { ...gameState, ...settings };
 		} else {
 			// Set initial state
@@ -65,13 +71,13 @@ class BingoGame extends Component {
 			selectedPattern: {
 				value: this.patternPlaceholder,
 				label: this.patternPlaceholder,
-				pattern: {
+				pattern: [{
 					B: [false, false, false, false, false],
 					I: [false, false, false, false, false],
 					N: [false, false, false, false, false],
 					G: [false, false, false, false, false],
 					O: [false, false, false, false, false],
-				},
+				}],
 			},
 			showResetModal: false,
 		};
@@ -341,44 +347,6 @@ class BingoGame extends Component {
 		}
 	};
 
-	/* ------------------ Handlers */
-	handleUpdatePattern = (pattern, letter, index, slot) => {
-		pattern[letter][index] = !slot;
-		let unusedLetters = [];
-		Object.keys(pattern).map((letter) => {
-			// Check for free space ONLY first. If it's not the letter N, check for any used spaces.
-			if (letter === 'N') {
-				let markedSpaces = [];
-				// loop through each space in the pattern for the letter N
-				pattern[letter].forEach((space, index) => {
-					// if the space is marked, push the index of the space into markedSpaces array
-					if (space) {
-						markedSpaces.push(index);
-					}
-				});
-				// if no spaces are marked, OR ONLY the free space is marked - push N to unused letters.
-				if (
-					markedSpaces.length === 0 ||
-					(markedSpaces.length === 1 && markedSpaces[0] === 2)
-				) {
-					unusedLetters.push(letter);
-				}
-			} else {
-				if (pattern[letter].indexOf(true) < 0) {
-					unusedLetters.push(letter);
-				}
-			}
-			return letter;
-		});
-		let customPattern = {
-			value: 'Custom',
-			label: 'Custom',
-			unusedLetters: unusedLetters,
-			pattern: pattern,
-		};
-		this.setState({ selectedPattern: customPattern });
-	};
-
 	/* ------------------- JSX Display Functions */
 
 	/**
@@ -551,7 +519,6 @@ class BingoGame extends Component {
 							{/* -------- Pattern --------- */}
 							<Pattern
 								pattern={this.state.selectedPattern}
-								update={this.handleUpdatePattern}
 								disabled={this.totalBallsCalled > 0}
 							/>
 							<div className="padding-vertical-lg">

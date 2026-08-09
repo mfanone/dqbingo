@@ -6,7 +6,7 @@ import '../../sass/bingopattern.scss';
 class Patterns extends React.Component {
 
   render() {
-    const patterns = getPresetPatterns().splice(1);
+    const patterns = getPresetPatterns();
     return(
       <section id="pattern-list">
         <div className="container row">
