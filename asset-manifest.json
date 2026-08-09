@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dqbingo/static/css/main.8cda1612.css",
-    "main.js": "/dqbingo/static/js/main.8ad344ed.js",
+    "main.css": "/dqbingo/static/css/main.64489467.css",
+    "main.js": "/dqbingo/static/js/main.d53c95ec.js",
     "static/media/shuffle.wav": "/dqbingo/static/media/shuffle.61b100e7a51014b7a8dc.wav",
     "static/media/call-ball.png": "/dqbingo/static/media/call-ball.b5ba0641a8c6c2e8ad0f.png",
     "static/media/Roboto-Medium.woff": "/dqbingo/static/media/Roboto-Medium.61c265591865cecb1c3d.woff",
@@ -31,11 +31,11 @@
     "static/media/pop4.mp3": "/dqbingo/static/media/pop4.2d15753a42753593bc84.mp3",
     "static/media/digital-7.woff": "/dqbingo/static/media/digital-7.4eed57244bb0a0bd583d.woff",
     "index.html": "/dqbingo/index.html",
-    "main.8cda1612.css.map": "/dqbingo/static/css/main.8cda1612.css.map",
-    "main.8ad344ed.js.map": "/dqbingo/static/js/main.8ad344ed.js.map"
+    "main.64489467.css.map": "/dqbingo/static/css/main.64489467.css.map",
+    "main.d53c95ec.js.map": "/dqbingo/static/js/main.d53c95ec.js.map"
   },
   "entrypoints": [
-    "static/css/main.8cda1612.css",
-    "static/js/main.8ad344ed.js"
+    "static/css/main.64489467.css",
+    "static/js/main.d53c95ec.js"
   ]
 }
