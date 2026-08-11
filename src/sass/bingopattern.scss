@@ -9,6 +9,10 @@
   }
   .print-btn {
     border-radius: 0.5rem;
+    &:hover {
+      background-color: #201A55;
+      color: #ffffff;
+    }
   }
   .pattern-block {
     flex-basis: calc(19% - 10px) !important;
