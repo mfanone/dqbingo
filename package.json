@@ -2,7 +2,7 @@
   "name": "letsplaybingo-react",
   "version": "3.2.1",
   "private": true,
-  "homepage": "https://mfanone.github.io/dqbingo",
+  "homepage": "https://bingo.martin-fanone.org",
   "dependencies": {
     "ajv": "^8.11.0",
     "react": "^17.0.2",
