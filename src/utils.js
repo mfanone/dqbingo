@@ -49,15 +49,15 @@ export const generateBingoBoard = () => {
   function getColor(letter) {
     switch (letter) {
       case "B":
-        return 'blue';
+        return '#F096BE';
       case "I":
-        return 'red';
+        return '#F9A13E';
       case "N":
-        return 'white';
+        return '#8CC540';
       case "G":
-        return 'green';
+        return '#85459A';
       case "O":
-        return 'yellow';
+        return '#62CCEF';
       default:
         return 'white';
     }
