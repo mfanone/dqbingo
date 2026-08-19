@@ -49,17 +49,17 @@ export const generateBingoBoard = () => {
   function getColor(letter) {
     switch (letter) {
       case "B":
-        return '#F096BE';
+        return 'c-f096be';
       case "I":
-        return '#F9A13E';
+        return 'c-f9a13e';
       case "N":
-        return '#8CC540';
+        return 'c-8cc540';
       case "G":
-        return '#85459A';
+        return 'c-85459a';
       case "O":
-        return '#62CCEF';
+        return 'c-62ccef';
       default:
-        return 'white';
+        return 'c-8cc540';
     }
   }
   return board;

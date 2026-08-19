@@ -99,24 +99,24 @@
 			}
 		}
 
-		&.blue {
-			background: radial-gradient(circle at 20% 20%, #0000ff, #0000ad);
+		&.c-f096be {
+			background: radial-gradient(circle at 20% 20%, #f096be, #905a72);
 			.content {
-				border: 0.15rem solid #0000ff;
+				border: 0.15rem solid #f096be;
 			}
 		}
 
-		&.red {
-			background: radial-gradient(circle at 20% 20%, #ff0000, #910000);
+		&.c-f9a13e {
+			background: radial-gradient(circle at 20% 20%, #f9a13e, #956125);
 			.content {
-				border: 0.15rem solid #ff0000;
+				border: 0.15rem solid #f9a13e;
 			}
 		}
 
-		&.white {
-			background: radial-gradient(circle at 20% 20%, #ffffff, #b6b6b6);
+		&.c-8cc540 {
+			background: radial-gradient(circle at 20% 20%, #8cc540, #547626);
 			.content {
-				border: 0.15rem solid #ff0000;
+				border: 0.15rem solid #8cc540;
 			}
 		}
 
@@ -142,17 +142,17 @@
 			}
 		}
 
-		&.green {
-			background: radial-gradient(circle at 20% 20%, #008000, #004a00);
+		&.c-85459a {
+			background: radial-gradient(circle at 20% 20%, #85459a, #50295c);
 			.content {
-				border: 0.15rem solid #008000;
+				border: 0.15rem solid #85459a;
 			}
 		}
 
-		&.yellow {
-			background: radial-gradient(circle at 20% 20%, #ffe52a, #f7bd00);
+		&.c-62ccef {
+			background: radial-gradient(circle at 20% 20%, #62ccef, #3b7a8f);
 			.content {
-				border: 0.15rem solid #f7bd00;
+				border: 0.15rem solid #62ccef;
 			}
 		}
 	}
@@ -238,27 +238,27 @@
 			font-size: 2rem;
 		}
 
-		&.blue {
-			background-color: #0000ff;
+		&.c-f096be {
+			background-color: #f096be;
 		}
 
-		&.red {
-			background-color: #ff0000;
+		&.c-f9a13e {
+			background-color: #f9a13e;
 		}
 
-		&.white {
-			background-color: #ffffff;
+		&.c-8cc540 {
+			background-color: #8cc540;
 			span {
 				color: #222222;
 			}
 		}
 
-		&.green {
-			background-color: #008000;
+		&.c-85459a {
+			background-color: #85459a;
 		}
 
-		&.yellow {
-			background-color: #f7bd00;
+		&.c-62ccef {
+			background-color: #62ccef;
 			span {
 				color: #222222;
 			}
