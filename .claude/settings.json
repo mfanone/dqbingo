@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(node -e ' *)",
+      "Bash(npm run *)",
+      "Bash(rm -rf /tmp/serve_root)",
+      "Bash(mkdir -p /tmp/serve_root/dqbingo)",
+      "Bash(cp -r build/* /tmp/serve_root/dqbingo/)",
+      "Bash(npx serve *)",
+      "Bash(disown)",
+      "Bash(lsof -ti:4205 -sTCP:LISTEN)",
+      "Bash(xargs -r kill)",
+      "Bash(rm -rf /tmp/serve_root /tmp/node_modules /tmp/package.json /tmp/package-lock.json)",
+      "Bash(timeout 30 bash -c 'until curl -sf http://localhost:4207/dqbingo/ >/dev/null; do sleep 1; done')",
+      "Bash(lsof -ti:4207 -sTCP:LISTEN)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(lsof -ti:4210 -sTCP:LISTEN)"
+    ]
+  }
+}
